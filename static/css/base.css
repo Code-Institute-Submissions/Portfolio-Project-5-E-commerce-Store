@@ -1,0 +1,29 @@
+html {
+    height: 100%;
+}
+
+/** -------------------------------------Padding, Margins, Text, **/
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+}
+
+a:link {
+    text-decoration: none;
+}
+
