@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
 html {
     height: 100%;
 }
@@ -27,3 +29,31 @@ a:link {
     text-decoration: none;
 }
 
+.btn-border {
+
+    border-left: 0.5px solid;
+    color: #B9B6C8 !important;
+}
+
+.btn-hover:hover {
+    text-decoration:underline;
+}
+
+.logo-font {
+
+    font-family: 'Abril Fatface', cursive !important;
+    font-size: 1.5rem;
+    color: #FF862A !important;
+
+
+}
+
+
+/** -------------------------------------Background colours **/
+
+.clr-grey {
+    color: #B9B6C8 !important;
+}
+.bg-orange {
+    background-color: black;
+}
