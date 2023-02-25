@@ -49,11 +49,32 @@ a:link {
 }
 
 
-/** -------------------------------------Background colours **/
+/** -------------------------------------Footer Section **/
+
+.social-link {
+
+    margin: 0 3rem 0 3rem;
+    font-size: 2rem;
+    color:#B9B6C8 ;
+}
+
+.social-link:hover {
+    color: #FF862A !important;
+}
+
+
+/** -------------------------------------Background colours and Colours **/
 
 .clr-grey {
     color: #B9B6C8 !important;
 }
+
+.bg-grey {
+
+    background-color: #DAECEC;
+
+}
+
 .bg-orange {
     background-color: black;
 }

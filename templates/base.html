@@ -35,6 +35,8 @@
     {% endblock %}
 
     {% block corejs %}
+        <!--Fontawesome kit-->
+        <script src="https://kit.fontawesome.com/95bc93f676.js" crossorigin="anonymous"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -82,7 +84,7 @@
             <ul class="navbar-nav ml-auto ">
               <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle clr-grey" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                  My Account
+                  <i class="fa-regular fa-user"></i>
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">Sign In</a>
@@ -95,7 +97,7 @@
 
           </div>
           
-          <a class="nav-link disabled m-0 clr-grey">Basket</a>
+          <a class="nav-link disabled m-0 clr-grey"><i class="fa-solid fa-basket-shopping"></i></a>
         </nav>
 
       </div>
@@ -114,6 +116,61 @@
     {% block content %}
 
     {% endblock %}
+
+    <!-- Footer -->
+    <footer class="container-fluid mt-3">
+
+      <div class="row bg-light mt-3 p-3">
+
+        <div class="col-12 text-center">
+              
+              <a href="https://www.instagram.com/" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+
+              <a href="https://en-gb.facebook.com/" target="_blank" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+
+              <a href="https://www.linkedin.com/in/joha-wilson-5075a8249/s" target="_blank" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+
+              <a href="https://twitter.com/?lang=en" target="_blank" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+
+              <a href="https://github.com/Joha-will?tab=repositories" target="_blank" class="social-link"><i class="fa-brands fa-github-alt"></i></a>
+
+        </div>
+
+      </div>
+
+      <div class="row bg-grey">
+
+          <div class="col-12 p-3 mt-5">
+
+              <h4 class="text-cente mr-auto">Our Location</h4>
+
+              <hr class="mt-0 cl-black">
+
+              <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus excepturi rem facere non? Harum temporibus excepturi cum nisi sed quaerat consectetur exercitationem repellendus voluptatum distinctio, dicta iusto aut aspernatur suscipit. </p>
+
+              
+
+          </div>
+
+
+          <hr class="mt-0">
+
+          <div class="m-auto">
+
+            <hr class="mt-0">
+
+            <small>&copy; Copyright 2023. Joha Wilson. This project is made for educational purposes only. No commercial revenue is generated from the project.</small>
+
+          </div>
+
+          
+
+      </div>
+
+      
+      
+    </footer>
+    <!--/ .Footer-->
 
     {% block postloadjs %}
     {% endblock %}
