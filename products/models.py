@@ -20,6 +20,10 @@ class Product(models.Model):
 
     name = models.CharField(max_length=254)
 
+    model_name = models.CharField(max_length=254, blank=True, null=True)
+
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
+
     description = models.TextField(blank=True)
 
     slug = models.SlugField(max_length=254)
