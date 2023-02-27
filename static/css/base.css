@@ -42,12 +42,31 @@ a:link {
 .logo-font {
 
     font-family: 'Abril Fatface', cursive !important;
-    font-size: 1.5rem;
-    color: #FF862A !important;
+    font-size: 2rem;
+    color: black !important;
 
 
 }
 
+/** -------------------------------------Background Images **/
+
+.index-bg-img-1 {
+    background-image: url('/media/homeimg1.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 60vh;
+}
+
+/**
+.index-bg-img-2 {
+    background-image: url('/media/homeimg2.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 500px;
+}
+**/
 
 /** -------------------------------------Footer Section **/
 
@@ -59,7 +78,7 @@ a:link {
 }
 
 .social-link:hover {
-    color: #FF862A !important;
+    color: #C35355 !important;
 }
 
 
@@ -69,6 +88,17 @@ a:link {
     color: #B9B6C8 !important;
 }
 
+.clr-red {
+    color:#C35355;
+}
+
+.bg-brown {
+
+    background-color: #BAA89B;
+
+}
+
+
 .bg-grey {
 
     background-color: #DAECEC;
@@ -76,5 +106,10 @@ a:link {
 }
 
 .bg-orange {
-    background-color: black;
+    background-color: #FF862A;
+}
+
+.footer-bg-clr {
+
+    background-color: #C35355;
 }

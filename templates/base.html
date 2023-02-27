@@ -55,40 +55,31 @@
 
       <div class="container-fluid mb-auto">
 
-        <nav class=" row navbar navbar-expand-lg navbar-light bg-orange">
+        <nav class=" row navbar navbar-expand-lg bg-white ">
 
           <button class="navbar-toggler clr-grey " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon "></span>
           </button>
 
-          <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
-            <ul class="navbar-nav">
+          <a class="navbar-brand ml-auto logo-font" href="{% url 'home' %}">Aduj <span class="clr-red"> <small>Visuals</small></span></a>
+
+          <div class="collapse navbar-collapse m-0 clr-grey" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto ">
+
               <li class="nav-item active ">
-                <a class="nav-link clr-grey btn-hover" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link clr-grey btn-hover" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item btn-border">
                 <a class="nav-link clr-grey btn-hover" href="#">Shop</a>
               </li>
-            </ul>
 
-          </div>
-
-          <a class="navbar-brand m-auto logo-font" href="#">Fire Hill</a>
-          
-          <form class="form-inline my-2 my-lg-0 m-5">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0 clr-grey" type="submit">Search</button>
-          </form>
-
-          <div class="collapse navbar-collapse m-0 clr-grey" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto ">
               <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle clr-grey" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa-regular fa-user"></i>
+                  <i class="fa-regular fa-user"></i> &nbsp; Account
                 </a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Sign In</a>
-                  <a class="dropdown-item" href="#">Register</a>
+                  <a class="dropdown-item" href="{% url 'account_login' %}">LogIn</a>
+                  <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
@@ -138,7 +129,7 @@
 
       </div>
 
-      <div class="row bg-grey">
+      <div class="row bg-brown footer-bg-clr">
 
           <div class="col-12 p-3 mt-5">
 
