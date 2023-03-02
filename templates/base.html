@@ -57,39 +57,62 @@
 
         <nav class=" row navbar navbar-expand-lg bg-white ">
 
-          <button class="navbar-toggler clr-grey " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler clr-grey " type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon "></span>
           </button>
 
-          <a class="navbar-brand ml-auto logo-font" href="{% url 'home' %}">Aduj <span class="clr-red"> <small>Visuals</small></span></a>
+          <a class="navbar-brand ml-auto logo-font" href="{% url 'home' %}">Aduj <span class="clr-red">
+              <small>Visuals</small></span></a>
 
-          <div class="collapse navbar-collapse m-0 clr-grey" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto ">
-
-              <li class="nav-item active ">
-                <a class="nav-link clr-grey btn-hover" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+          <div class="collapse navbar-collapse m-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link btn-hover clr-grey" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item btn-border">
-                <a class="nav-link clr-grey btn-hover" href="{% url 'products' %}">Shop</a>
-              </li>
-
               <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle clr-grey" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                   <i class="fa-regular fa-user"></i> &nbsp; Account
                 </a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{% url 'account_login' %}">LogIn</a>
-                  <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
+                  <a class="dropdown-item clr-grey" href="{% url 'account_login' %}">LogIn</a>
+                  <a class="dropdown-item clr-grey" href="{% url 'account_signup' %}">Register</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item clr-grey" href="#">Something else here</a>
                 </div>
               </li>
             </ul>
 
           </div>
-          
           <a class="nav-link disabled m-0 clr-grey"><i class="fa-solid fa-basket-shopping"></i></a>
         </nav>
+
+        <div class="row bg-light mt-3 p-1">
+
+          <div class="col-12 text-center">
+
+            <ul class="m-auto">
+
+              <li class="d-inline p-3">
+                <a class="btn-hover clr-grey">Shop All</a>
+              </li>
+
+              {% for category in categories %}
+
+              <li class="d-inline p-3">
+                <a class="btn-hover clr-grey">{{ category.category_name }}</a>
+              </li>
+
+              {% endfor %}
+
+
+            </ul>
+
+          </div>
+
+        </div>
+
 
       </div>
 

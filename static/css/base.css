@@ -25,6 +25,10 @@ h5 {
     margin: 0;
 }
 
+ul {
+    list-style: none;
+}
+
 a:link {
     text-decoration: none;
 }
@@ -36,7 +40,8 @@ a:link {
 }
 
 .btn-hover:hover {
-    text-decoration:underline;
+    text-decoration:underline #C35355 !important;
+
 }
 
 .logo-font {
@@ -81,11 +86,15 @@ a:link {
     color: #C35355 !important;
 }
 
+.nav-links:hover {
+    color: #C35355 !important;
+}
+
 
 /** -------------------------------------Background colours and Colours **/
 
 .clr-grey {
-    color: #B9B6C8 !important;
+    color: #8C8C8C !important;
 }
 
 .clr-red {
