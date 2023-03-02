@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Product
+from .models import Product, Category
 
 
 def all_products(request):
@@ -13,3 +13,14 @@ def all_products(request):
     }
 
     return render(request, "products/products.html", context)
+
+
+def all_categories(request):
+
+    categories = Category.objects.all()
+
+    context = {
+        'categories': categories,
+    }
+
+    return context

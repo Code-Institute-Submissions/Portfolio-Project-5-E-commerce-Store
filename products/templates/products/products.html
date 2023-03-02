@@ -12,12 +12,30 @@
 
         <div class="row">
 
+            {% for product in products %}
 
-            <div class="col-12 p-0 m-0 text-center ">
+                <div class="col-12 p-0 mt-5">
 
-                {{ products }}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ product.image.url}}" class="card-img-top" alt="{{ product.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ product.category }}</li>
+                            <li class="list-group-item">{{ product.size }}</li>
+                            <li class="list-group-item">£{{ product.price }}</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
 
-            </div>
+                </div>
+
+            {% endfor %}
 
         </div>
 
