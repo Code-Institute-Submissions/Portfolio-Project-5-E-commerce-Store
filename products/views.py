@@ -47,10 +47,26 @@ def all_categories(request):
     return context
 
 
-def product_detail(request, slug):
+def search_category(request, category_slug=None):
     """ A view that displays all product to customers"""
 
-    product = get_object_or_404(Product, slug=slug)
+    category = get_object_or_404(Category, slug=category_slug)
+
+    products = Product.objects.filter(category=category)
+
+    context = {
+
+        'category': category,
+        'products': products,
+    }
+
+    return render(request, "products/search_category.html", context)
+
+
+def product_detail(request, product_slug):
+    """ A view that displays all product to customers"""
+
+    product = get_object_or_404(Product, slug=product_slug)
 
     context = {
         'product': product,

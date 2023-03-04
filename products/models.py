@@ -17,6 +17,10 @@ class Category(models.Model):
 
         return self.category_name
 
+    def get_absolute_url(self):
+
+        return reverse('search_category', args=[self.slug])
+
 
 class Product(models.Model):
 
