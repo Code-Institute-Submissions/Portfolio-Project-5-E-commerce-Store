@@ -10,13 +10,11 @@
 
     <div class="container-fluid  mb-auto">
 
-        <div class="row">
+        <div class="row mt-5">
 
             {% for product in products %}
 
-                <div class="col-12 p-0 mt-5">
-
-                    <div class="card" style="width: 18rem;">
+                    <div class="card col-3 p-0 m-auto text-cente" style="width: 18rem;">
 
                         <a href="">
 
@@ -25,12 +23,12 @@
                         </a>
 
                         <div class="card-body">
-                            <a href="">
+                            <a href="{{product.get_absolute_url}}">
 
                                 <h5 class="card-title">{{ product.name }}</h5>
 
                             </a>
-                            <p class="card-text">{{ product.description }}</p>
+
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">{{ product.category }}</li>
@@ -43,7 +41,6 @@
                         </div>
                     </div>
 
-                </div>
 
             {% endfor %}
 

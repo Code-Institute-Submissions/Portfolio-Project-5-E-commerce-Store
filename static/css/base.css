@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Aclonica&display=swap');
 
 html {
     height: 100%;
@@ -46,7 +46,7 @@ a:link {
 
 .logo-font {
 
-    font-family: 'Abril Fatface', cursive !important;
+    font-family: 'Aclonica', sans-serif !important;
     font-size: 2rem;
     color: black !important;
 
@@ -56,7 +56,7 @@ a:link {
 /** -------------------------------------Background Images **/
 
 .index-bg-img-1 {
-    background-image: url('/media/homeimg1.jpg');
+    background-image: url('');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

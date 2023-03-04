@@ -24,8 +24,6 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 
         
-
-
     {% endblock %}
 
     
@@ -73,7 +71,7 @@
               </li>
               <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle clr-grey" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa-regular fa-user"></i> &nbsp; Account
+                  <i class="fa-regular fa-user"></i>
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item clr-grey" href="{% url 'account_login' %}">LogIn</a>
@@ -95,14 +93,14 @@
             <ul class="m-auto">
 
               <li class="d-inline p-3">
-                <a class="btn-hover clr-grey">Shop All</a>
+                <a href="{% url 'products' %}" class="btn-hover clr-grey">Shop</a>
               </li>
 
               {% for category in categories %}
 
-              <li class="d-inline p-3">
-                <a class="btn-hover clr-grey">{{ category.category_name }}</a>
-              </li>
+                <li class="d-inline p-3">
+                  <a class="btn-hover clr-grey">{{ category.category_name }}</a>
+                </li>
 
               {% endfor %}
 
