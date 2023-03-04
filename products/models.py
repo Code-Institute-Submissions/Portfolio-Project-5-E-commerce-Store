@@ -2,6 +2,7 @@ from django.db import models
 
 from django.shortcuts import reverse
 
+
 class Category(models.Model):
 
     category_name = models.CharField(max_length=254, db_index=True)
