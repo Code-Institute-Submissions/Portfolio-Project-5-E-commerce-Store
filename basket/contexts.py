@@ -3,7 +3,7 @@ from django.conf import settings
 from decimal import Decimal
 
 
-def bag_contents(request):
+def basket_contents(request):
 
     """ Basket contents """
 
@@ -28,3 +28,5 @@ def bag_contents(request):
         'order_total': order_total,
 
     }
+
+    return context
