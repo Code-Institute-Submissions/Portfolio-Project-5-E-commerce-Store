@@ -3,6 +3,14 @@ from django.db import models
 from django.shortcuts import reverse
 
 
+product_sizes = (
+
+    ('4X6IN (10X15CM)', '4X6IN (10X15CM)'),
+    ('5X7IN (13X18CM)', '5X7IN (13X18CM)'),
+    ('8X10IN (20X25CM)', '8X10IN (20X25CM)'),
+)
+
+
 class Category(models.Model):
 
     category_name = models.CharField(max_length=254, db_index=True)
@@ -34,7 +42,7 @@ class Product(models.Model):
 
     slug = models.SlugField(max_length=254)
 
-    size = models.CharField(max_length=5)
+    size = models.CharField(max_length=20, choices=product_sizes, default='4X6IN (10X15CM)')
 
     image = models.ImageField(null=True, blank=True)
 

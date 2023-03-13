@@ -81,13 +81,16 @@
           <div class="collapse navbar-collapse m-0" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link btn-hover clr-grey" href="{% url 'home' %}">Home <span
+                <a class="nav-link btn-hover clr-grey" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> <span
                     class="sr-only">(current)</span></a>
               </li>
+
+              &nbsp;
+
               <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle clr-grey" href="#" role="button" data-toggle="dropdown"
                   aria-expanded="false">
-                  <i class="fa-regular fa-user"></i>
+                  <i class="fa-solid fa-user"></i>
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item clr-grey" href="{% url 'account_login' %}">LogIn</a>
@@ -96,23 +99,26 @@
                   <a class="dropdown-item clr-grey" href="#">Something else here</a>
                 </div>
               </li>
+
+              <li class="nav-item active">
+                
+                <a href="{% url 'view_basket' %}" class="nav-link m-0 clr-grey">
+
+                  <i class="fa-solid fa-basket-shopping"></i>
+    
+                  &nbsp;
+                  {% if product_count %}
+                  <div class="d-inline-flex badge badge-info">
+                    {{ product_count }}
+                  </div>
+                  {% else %}
+    
+                  {% endif %}
+    
+                </a>
+              </li>
             </ul>
 
-          </div>
-          <div>
-
-            <a href="{% url 'view_basket' %}" class="nav-link m-0 clr-grey"><i class="fa-solid fa-basket-shopping"></i></a>
-            <p>
-              {% if order_total %}
-
-                £ {{order_total| floatformat:2 }}
-
-              {% else %}
-              
-                0.00
-
-              {% endif %}
-            </p>
           </div>
         </nav>
 
