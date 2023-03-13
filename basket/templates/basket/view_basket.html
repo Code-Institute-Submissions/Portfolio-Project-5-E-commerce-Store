@@ -10,35 +10,84 @@
 
     <div class="container-fluid mb-auto">
 
-        <div class="row">
+      <h1 class="h5"> Your Basket </h1>
 
-            <div class="card mb-3 col m-auto" style="max-width: 800px;">
+      <hr>
 
-                <div class="row no-gutters">
+      <br>
 
-                  <div class="col-md-4">
+        <div class="row m-auto">
 
-                    <img src="..." alt="...">
+          {% if basket_items %}
 
-                  </div>
+          {% for item in basket_items %}
 
-                  <div class="col-md-8">
+          <table class="table">
 
-                    <div class="card-body">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
 
-                      <h5 class="card-title">Card title</h5>
+            <tbody>
 
-                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <tr>
 
-                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <td>
 
-                    </div>
+                      <a href="">
 
-                  </div>
+                        <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
+                        
+                      </a>
 
-                </div>
-                
-              </div>
+                    </td>
+
+                    <td>
+
+                      <a href="{{ item.product.get_absolute_url }}">
+
+                        <h6>{{ item.product.name }}</h6>
+      
+                      </a>
+
+                    </td>
+
+                    <td>
+
+                      <p> £ {{ item.product.price }}</p>
+
+                    </td>
+
+                    <td>
+
+                      <p> {{ item.quantity }}</p>
+
+                    </td>
+                    <td>
+
+                        <p> £ {{ item.product.price }}</p>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+          {% endfor %}
+
+          {% else %}
+
+          <p>Your basket is empty </p>
+
+          {% endif %}
 
 
         </div>

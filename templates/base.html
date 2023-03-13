@@ -99,7 +99,21 @@
             </ul>
 
           </div>
-          <a href="{% url 'view_basket' %}" class="nav-link m-0 clr-grey"><i class="fa-solid fa-basket-shopping"></i></a>
+          <div>
+
+            <a href="{% url 'view_basket' %}" class="nav-link m-0 clr-grey"><i class="fa-solid fa-basket-shopping"></i></a>
+            <p>
+              {% if order_total %}
+
+                £ {{order_total| floatformat:2 }}
+
+              {% else %}
+              
+                0.00
+
+              {% endif %}
+            </p>
+          </div>
         </nav>
 
         <div class="row bg-light mt-3 p-1">
