@@ -57,6 +57,11 @@ INSTALLED_APPS = [
 
     'basket',
 
+    # Django Mathfilters
+
+    'mathfilters',
+
+
 
 ]
 

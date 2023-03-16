@@ -26,6 +26,4 @@ def add_to_basket(request, product_id):
 
     request.session['basket'] = basket
 
-    print(request.session['basket'])
-
     return redirect(redirect_url)
