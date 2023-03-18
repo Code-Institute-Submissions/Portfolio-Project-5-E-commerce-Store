@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 
 
 def view_basket(request):
@@ -27,3 +27,24 @@ def add_to_basket(request, product_id):
     request.session['basket'] = basket
 
     return redirect(redirect_url)
+
+
+def update_basket(request, product_id):
+
+    """ A view that give users the ability to add products to basket"""
+
+    product_quantity = int(request.POST.get('quantity'))
+
+    basket = request.session.get('basket', {})
+
+    if product_quantity > 0:
+
+        basket[product_id] = product_quantity
+
+    else:
+
+        basket.pop(product_id)
+
+    request.session['basket'] = basket
+
+    return redirect(reverse('view_basket'))

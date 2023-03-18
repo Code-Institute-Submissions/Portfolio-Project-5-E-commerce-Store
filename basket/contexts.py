@@ -32,7 +32,7 @@ def basket_contents(request):
             'product_id': product_id,
 
             'product': product,
-  
+
             'quantity': product_quantity,
 
         })
