@@ -1,0 +1,48 @@
+<div class="toast custom-toast bg-grey" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+
+    <div class="row">
+
+      <div class="col-12">
+
+        <button type="button" class="close m-2" data-dismiss="toast" aria-label="Close">
+
+          <span aria-hidden="true" class="font-italic font-size-2"><small>&times;</small></span>
+
+        </button>
+        <br>
+
+        <h6 class="ml-2 font-weight-bold"> <i class="fa-solid fa-check fa-sm"></i> {{message}}</h6>
+
+      </div>
+
+
+    </div>
+    <hr>
+
+    <div class="toast-body">
+
+      <a href="{{ product.image.url}}">
+
+        <img src="{{ product.image.url}}" width="50px" class="rounded mr-2" alt="{{ product.name }}">
+        
+      </a>
+
+
+    </div>
+    <div class="row text-center">
+
+      <div class="col-12">
+        <a href="{% url 'view_basket' %}" class="p-3  btn m-0 text-white bg-logo-red w-100 border-dark rounded-0">View Basket</a>
+      </div>
+      <div class="col-12 mt-2">
+        <a href="{% url 'products' %}" class="p-3 btn bg-dark text-white w-100 border-dark rounded-0">Check Out</a>
+
+      </div>
+      <div class="col-12 mt-1">
+        <a href="{% url 'products' %}" class="btn-hover clr-grey text-white">Continue Shopping</a>
+      </div>
+      <br><br>
+
+    </div>
+    
+  </div>

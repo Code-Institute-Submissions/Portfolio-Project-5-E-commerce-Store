@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 
+from django.contrib import messages
+
 from products.models import Product
 
 
@@ -14,6 +16,8 @@ def add_to_basket(request, product_id):
 
     """ A view that gives users the ability to add products to basket"""
 
+    product = get_object_or_404(Product, pk=product_id)
+
     product_quantity = int(request.POST.get('quantity'))
 
     redirect_url = (request.POST.get('redirect_url'))
@@ -21,10 +25,14 @@ def add_to_basket(request, product_id):
     basket = request.session.get('basket', {})
 
     if product_id in list(basket.keys()):
+
         basket[product_id] += product_quantity
 
     else:
+
         basket[product_id] = product_quantity
+
+    messages.success(request, "Product added to basket")
 
     request.session['basket'] = basket
 
@@ -35,6 +43,8 @@ def update_basket(request, product_id):
 
     """ A view that gives users the ability to update a product quantity from basket"""
 
+    product = get_object_or_404(Product, pk=product_id)
+
     product_quantity = int(request.POST.get('quantity'))
 
     basket = request.session.get('basket', {})
@@ -42,6 +52,8 @@ def update_basket(request, product_id):
     if product_quantity > 0:
 
         basket[product_id] = product_quantity
+
+        messages.success(request, f'Added {product.name} to basket')
 
     else:
 
@@ -58,11 +70,11 @@ def remove_product(request, product_id):
 
     basket = request.session.get('basket', {})
 
-    product = get_object_or_404(Product, id=product_id)
+    product = get_object_or_404(Product, pk=product_id)
 
     if product_id in list(basket.keys()):
 
-        basket.pop(product_id)
+        del basket[product_id]
 
     request.session['basket'] = basket
 
