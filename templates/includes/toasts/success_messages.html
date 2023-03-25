@@ -1,4 +1,4 @@
-<div class="toast custom-toast bg-grey" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+<div class="toast custom-toast bg-grey pr-0" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
 
     <div class="row">
 
@@ -19,14 +19,36 @@
     </div>
     <hr>
 
-    <div class="toast-body">
+    <div class="row toast-body">
 
-      <a href="{{ product.image.url}}">
+      <div class="col-10 ml-3 d-inline-flex">
 
-        <img src="{{ product.image.url}}" width="50px" class="rounded mr-2" alt="{{ product.name }}">
+        <a href="{{ product.image.url}}">
+
+          <img src="{{ product.image.url}}" width="50px" class="rounded mr-2" alt="{{ product.name }}">
+
+        </a>
+
+        <div class="d-block mt-0">
+
+          <div class="font-weight-bold">{{ product.name }}</div>
+
+          <div class="font-weight-bold"> Size:
+            <span>
+              <small> 
+                {{ product.size }}
+              </small>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="align-middle mr-auto">
+
+        <a href="{% url 'remove_product' product.id %}" class="remove-button" data-id="{{ item.product_id }}">
+          <i class="fa-solid fa-trash fa-lg"></i>
+        </a>
         
-      </a>
-
+      </div>
 
     </div>
     <div class="row text-center">
