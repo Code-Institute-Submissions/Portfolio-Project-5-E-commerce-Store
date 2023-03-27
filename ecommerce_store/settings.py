@@ -65,6 +65,10 @@ INSTALLED_APPS = [
 
     'mathfilters',
 
+    # Django Crispy-Forms
+
+    'crispy_forms',
+
 
 
 
@@ -83,6 +87,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ecommerce_store.urls'
 
+CRISPY_TEMPLATE_PACK = 'boostrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -99,6 +105,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'products.views.all_categories',
                 'basket.contexts.basket_contents',
+            ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
             ],
         },
     },
