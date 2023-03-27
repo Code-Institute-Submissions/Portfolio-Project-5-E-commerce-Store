@@ -24,7 +24,103 @@
 
       <br>
 
-        <div class="row m-auto">
+        <div class="row">
+
+            <div class="col-6">
+
+                <form action="{% url 'checkout' %}" method="POST" id="checkout-form">
+                    {% csrf_token %}
+                    <fieldset>
+                     <legend>Your information </legend>
+                     
+                     <div class="container">
+                        
+                        <div class="row">
+                          <div class="col-md-12"> {{ order_form.full_name | as_crispy_field }}</div>
+                        </div>
+                      
+                        <div class="row">
+                          <div class="col-6">{{ order_form.email | as_crispy_field }}</div>
+                          <div class="col-6">{{ order_form.phone_number | as_crispy_field }}</div>
+                        </div>
+                      
+                        <div class="row">
+                          <div class="col-6">.col-6</div>
+                          <div class="col-6">.col-6</div>
+                        </div>
+                      </div>
+                    </fieldset>
+                   </form>
+
+            </div>
+
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-4 ml-auto">
+
+                        <h6> Your Basket </h6>
+
+                    </div>
+                    <div class="col-4 mr-auto">
+
+                        <div class="border">
+                            <a href="{ url 'view_basket' }">
+                                Edit
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    {% for item in basket_items %}
+
+                    <div class="col-10 ml-3 d-inline-flex">
+
+                        <a href="{{ item.product.image.url}}">
+
+                        <img src="{{ item.product.image.url}}" width="50px" class="rounded mr-2" alt="{{ item.product.name }}">
+
+                        </a>
+
+                        <div class="d-block mt-0">
+
+                        <div class="font-weight-bold">{{ item.product.name }}</div>
+
+                        <div class="font-weight-bold"> Size:
+                            <span>
+                            <small> 
+                                {{ item.product.size }}
+                            </small>
+                            </span>
+                        </div>
+                        <div class="font-weight-bold"> Qty: {{item.quantity}}</div>
+                        </div>
+                    </div>
+
+                    </div>
+                    {% endfor %}
+                    <div class="row text-center">
+
+                    <div class="col-12">
+                        <a href="{% url 'view_basket' %}" class="p-3  btn m-0 text-white bg-logo-red w-100 border-dark rounded-0">View Basket</a>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <a href="{% url 'products' %}" class="p-3 btn bg-dark text-white w-100 border-dark rounded-0">Check Out</a>
+
+                    </div>
+                    <div class="col-12 mt-1">
+                        <a href="{% url 'products' %}" class="btn-hover clr-grey text-white">Continue Shopping</a>
+                    </div>
+                    <br><br>
+
+                    </div>
+                    
+
+                </div>
+
+            </div>
 
 
         </div>

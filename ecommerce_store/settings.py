@@ -87,7 +87,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ecommerce_store.urls'
 
-CRISPY_TEMPLATE_PACK = 'boostrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
