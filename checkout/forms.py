@@ -2,15 +2,14 @@ from django import forms
 
 from .models import Order
 
+
 class OrderForm(forms.ModelForm):
 
     class Meta:
 
         model = Order
 
-        fields = ('full_name', 'email', 'phone_number',
-              'country', 'address1', 'address2', 'city', 'county',
-              'postal_code',)
+        fields = ('full_name', 'email', 'phone_number', 'country', 'address1', 'address2', 'city', 'county', 'postal_code',)
 
     def __init__(self, *args, **kwargs):
         """ Add placeholders and  set autofoucs to first field"""
@@ -36,7 +35,7 @@ class OrderForm(forms.ModelForm):
 
             'postal_code': 'Postal Code', 
         }
-    
+
     self.fields['full_name'].widget.atrrs['autofocus'] = True
     for field in self.fields:
         if self.fields[field].required:
