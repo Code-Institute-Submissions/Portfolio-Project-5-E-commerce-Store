@@ -18,28 +18,30 @@
 
     </div>
     <hr>
+    {% for item in basket_items %}
 
     <div class="row toast-body">
 
       <div class="col-10 ml-3 d-inline-flex">
 
-        <a href="{{ product.image.url}}">
+        <a href="{{ item.product.image.url}}">
 
-          <img src="{{ product.image.url}}" width="50px" class="rounded mr-2" alt="{{ product.name }}">
+          <img src="{{ item.product.image.url}}" width="50px" class="rounded mr-2" alt="{{ item.product.name }}">
 
         </a>
 
         <div class="d-block mt-0">
 
-          <div class="font-weight-bold">{{ product.name }}</div>
+          <div class="font-weight-bold">{{ item.product.name }}</div>
 
           <div class="font-weight-bold"> Size:
             <span>
               <small> 
-                {{ product.size }}
+                {{ item.product.size }}
               </small>
             </span>
           </div>
+          <div class="font-weight-bold"> Qty: {{item.quantity}}</div>
         </div>
       </div>
       <div class="align-middle mr-auto">
@@ -51,6 +53,7 @@
       </div>
 
     </div>
+    {% endfor %}
     <div class="row text-center">
 
       <div class="col-12">

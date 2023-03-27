@@ -121,7 +121,7 @@
           </div>
         </nav>
 
-        <div class="row bg-light mt-3 p-1">
+        <div class="row bg-light p-1">
 
           <div class="col-12 text-center">
 
@@ -156,14 +156,34 @@
 
     {% if messages %}
 
-        <div class="message-container mt-5">
+        <div class="message-container mt-4">
 
           {% for message in messages %}
 
-            {% include 'includes/toasts/success_messages.html' %}
+            {% with message.level as level %}
 
+              {% if level == 40 %}
+
+                {% include 'includes/toasts/error_messages.html' %}
+
+              {% elif level == 30 %}
+
+                {% include 'includes/toasts/warning_messages.html' %}
+
+              {% elif level == 25 %}
+
+                {% include 'includes/toasts/success_messages.html' %}
+
+              {% else %}
+
+                {% include 'includes/toasts/info_messages.html' %}
+                
+              {% endif %}
+
+            {% endwith %}
 
           {% endfor %}
+
         </div>
 
     {% endif %}

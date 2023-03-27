@@ -53,7 +53,7 @@ def update_basket(request, product_id):
 
         basket[product_id] = product_quantity
 
-        messages.success(request, f'Added {product.name} to basket')
+        messages.info(request, f'Quantity updated to ({product_quantity})!')
 
     else:
 
@@ -75,6 +75,7 @@ def remove_product(request, product_id):
     if product_id in list(basket.keys()):
 
         del basket[product_id]
+        messages.info(request, f'{product.name} removed from basket!')
 
     request.session['basket'] = basket
 
