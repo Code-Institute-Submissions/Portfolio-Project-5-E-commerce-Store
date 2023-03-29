@@ -26,7 +26,7 @@
 
         <div class="row">
 
-            <div class="col-6">
+            <div class="col-lg-6 col-md-12">
 
                 <form action="{% url 'checkout' %}" method="POST" id="checkout-form">
                     {% csrf_token %}
@@ -40,85 +40,137 @@
                         </div>
                       
                         <div class="row">
-                          <div class="col-6">{{ order_form.email | as_crispy_field }}</div>
-                          <div class="col-6">{{ order_form.phone_number | as_crispy_field }}</div>
+                          <div class="col-6 col-sm-12">{{ order_form.email | as_crispy_field }}</div>
+                          <div class="col-6 col-sm-12">{{ order_form.phone_number | as_crispy_field }}</div>
                         </div>
                       
                         <div class="row">
-                          <div class="col-6">.col-6</div>
-                          <div class="col-6">.col-6</div>
+                          <div class="col-12">{{ order_form.address1 | as_crispy_field }}</div>
+                          <div class="col-12">{{ order_form.address2 | as_crispy_field }}</div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-6 col-sm-12">{{ order_form.city | as_crispy_field }}</div>
+                            <div class="col-6 col-sm-12">{{ order_form.postal_code | as_crispy_field }}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">{{ order_form.county | as_crispy_field }}</div>
+                            <div class="col-12">{{ order_form.country | as_crispy_field }}</div>
+                        </div>
+
+
                       </div>
                     </fieldset>
                    </form>
 
             </div>
 
-            <div class="col-4">
-                <div class="row">
-                    <div class="col-4 ml-auto">
+            <div class="col-lg-4 col-sm-12 ml-lg-auto m-sm-auto">
+                <fieldset>
+                    
+                    <div class="row">
+                        <div class="col-5 mr-auto">
 
-                        <h6> Your Basket </h6>
+                            <legend>Your basket</legend>
+
+                        </div>
+                        <div class="col-4 ml-auto">
+
+                            <div class="border text-center p-1">
+                                <a href="{ url 'view_basket' }">
+                                    Edit
+                                </a>
+                            </div>
+
+                        </div>
 
                     </div>
-                    <div class="col-4 mr-auto">
 
-                        <div class="border">
-                            <a href="{ url 'view_basket' }">
-                                Edit
+                    <br>
+
+
+                    <div class="row">
+
+                        {% for item in basket_items %}
+
+                        <div class="col-10 ml-3 d-inline-flex pt-2">
+
+                            <a href="{{ item.product.image.url}}">
+
+                                <img src="{{ item.product.image.url}}" width="40px" height="50px" class="rounded mr-2"
+                                    alt="{{ item.product.name }}">
+
                             </a>
+
+                            <div class="d-block mt-0">
+
+                                <div class="font-weight-bold">{{ item.product.name }}</div>
+
+                                <div class="font-weight-bold"> Size:
+                                    <span>
+                                        <small>
+                                            {{ item.product.size }}
+                                        </small>
+                                    </span>
+                                </div>
+                                <div class="font-weight-bold"> Qty: {{item.quantity}}</div>
+                            </div>
+                        <hr>
+                           
                         </div>
+                        {% endfor %}
 
-                    </div>
+                        <div class="col-12 m-0">
+                            <hr>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>Subtotal:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span> £ {{total }}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span> Delivery: </span>
+                                </div>
+                                <div class="col-6">
+                                    <span> £ {{ delivery | floatformat:2}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>Order Total:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span> £ {{order_total | floatformat:2}}</span>
+                                </div>
+                            </div>
 
-                </div>
-                <div class="row">
-
-                    {% for item in basket_items %}
-
-                    <div class="col-10 ml-3 d-inline-flex">
-
-                        <a href="{{ item.product.image.url}}">
-
-                        <img src="{{ item.product.image.url}}" width="50px" class="rounded mr-2" alt="{{ item.product.name }}">
-
-                        </a>
-
-                        <div class="d-block mt-0">
-
-                        <div class="font-weight-bold">{{ item.product.name }}</div>
-
-                        <div class="font-weight-bold"> Size:
-                            <span>
-                            <small> 
-                                {{ item.product.size }}
-                            </small>
-                            </span>
                         </div>
-                        <div class="font-weight-bold"> Qty: {{item.quantity}}</div>
-                        </div>
-                    </div>
-
-                    </div>
-                    {% endfor %}
-                    <div class="row text-center">
-
-                    <div class="col-12">
-                        <a href="{% url 'view_basket' %}" class="p-3  btn m-0 text-white bg-logo-red w-100 border-dark rounded-0">View Basket</a>
-                    </div>
-                    <div class="col-12 mt-2">
-                        <a href="{% url 'products' %}" class="p-3 btn bg-dark text-white w-100 border-dark rounded-0">Check Out</a>
-
-                    </div>
-                    <div class="col-12 mt-1">
-                        <a href="{% url 'products' %}" class="btn-hover clr-grey text-white">Continue Shopping</a>
-                    </div>
-                    <br><br>
+                    
 
                     </div>
                     
+                    <div class="row text-center">
 
-                </div>
+                        <div class="col-12 mt-2">
+                            <a href="{% url 'products' %}"
+                                class="p-3 btn bg-dark text-white w-100 border-dark rounded-0">Check Out</a>
+
+                        </div>
+                        <div class="col-12 mt-1">
+                            <a href="{% url 'products' %}" class="btn-hover clr-grey text-white">Continue Shopping</a>
+                        </div>
+                        <br><br>
+
+                    </div>
+
+
+            </div>
+
+            </fieldset>
 
             </div>
 

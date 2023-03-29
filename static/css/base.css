@@ -18,6 +18,11 @@ header {
     margin: 0;
 }
 
+.custom-toggler.navbar-toggler {
+
+    border-color:#C35355
+}
+
 h1,
 h2,
 h3,

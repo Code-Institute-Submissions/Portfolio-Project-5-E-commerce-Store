@@ -50,16 +50,14 @@
     
     <header>
 
-      <div class="container-fluid mb-auto">
+      <div class="container-fluid mb-auto bg-grey">
 
-        <nav class="row navbar navbar-expand-lg bg-grey ">
-
-          <button class="navbar-toggler clr-grey " type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        <nav class="row navbar navbar-expand-lg navbar-light">
+          <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
             aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon "></span>
+            <span class="navbar-toggler-icon"></span>
           </button>
-
           <a class="navbar-brand ml-auto logo-font" href="{% url 'home' %}">Aduj <span class="clr-red">
               <small>Visuals</small></span></a>
 
@@ -77,7 +75,8 @@
             </div>
           </form>
 
-          <div class="collapse navbar-collapse m-0" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse p-0" id="navbarTogglerDemo02">
+
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
                 <a class="nav-link btn-hover clr-grey" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> <span
@@ -91,66 +90,41 @@
                   aria-expanded="false">
                   <i class="fa-solid fa-user"></i>
                 </a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu dropdown-menu-right">
                   <a class="dropdown-item clr-grey" href="{% url 'account_login' %}">LogIn</a>
                   <a class="dropdown-item clr-grey" href="{% url 'account_signup' %}">Register</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item clr-grey" href="#">Something else here</a>
                 </div>
               </li>
+              <li>
+                <div class="nav-item active d-flex">
+                  <div class="d-block">
 
-              <li class="nav-item active">
-                
-                <a href="{% url 'view_basket' %}" class="nav-link m-0 clr-grey">
+                    {% if product_count %}
+                    <span class="m-0 badge badge-info badge-pill">
+                      {{ product_count }}
+                    </span>
+                    {% else %}
 
-                  <i class="fa-solid fa-basket-shopping"></i>
-    
-                  &nbsp;
-                  {% if product_count %}
-                  <div class="d-inline-flex badge badge-info">
-                    {{ product_count }}
+                    {% endif %}
+
+                    <a href="{% url 'view_basket' %}" class="nav-link m-0 clr-grey p-0">
+
+                      <i class="fa-solid fa-basket-shopping"></i>
+
+                    </a>
                   </div>
-                  {% else %}
-    
-                  {% endif %}
-    
-                </a>
               </li>
             </ul>
-
           </div>
         </nav>
-
-        <div class="row bg-light p-1">
-
-          <div class="col-12 text-center">
-
-            <ul class="m-auto">
-
-              <li class="d-inline p-3">
-                <a href="{% url 'products' %}" class="btn-hover clr-grey">Shop</a>
-              </li>
-
-              {% for category in categories %}
-
-                <li class="d-inline p-3">
-  
-                  <a class="btn-hover clr-grey" href="{{category.get_absolute_url}}">{{ category.category_name }}</a>
-
-                </li>
-
-
-              {% endfor %}
-
-
-            </ul>
-
-          </div>
-
-        </div>
-
-
+        
       </div>
+      <div class="container-fluid">
+      {% include 'includes/main_nav.html' %}
+      </div>
+      
 
     </header>
 
