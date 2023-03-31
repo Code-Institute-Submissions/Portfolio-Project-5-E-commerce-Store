@@ -28,7 +28,7 @@
 
             <div class="col-lg-6 col-md-12">
 
-                <form action="{% url 'checkout' %}" method="POST" id="checkout-form">
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset>
                      <legend>Your information </legend>
@@ -62,8 +62,23 @@
 
                       </div>
                     </fieldset>
-                   </form>
+                    <fieldset>
+                        <legend>Payment</legend>
+                        <div class="container">
+                            <div class="row">
 
+                                <div id="payment-element" class="col-12 border-bottom p-1">
+                                    <!-- Elements will create form elements here -->
+                                </div>
+                                <br><br>
+                                <button id="submit" class="p-2 btn bg-dark text-white border-dark rounded-1 ml-auto">Complete Order</button>
+                                <div id="error-message">
+                                    <!-- Display error message to your customers here -->
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
 
             <div class="col-lg-4 col-sm-12 ml-lg-auto m-sm-auto">
@@ -72,7 +87,7 @@
                     <div class="row">
                         <div class="col-5 mr-auto">
 
-                            <legend>Your basket</legend>
+                            <legend>Your basket <small class="font-italic">({{product_count}})</small></legend>
 
                         </div>
                         <div class="col-4 ml-auto">
@@ -152,20 +167,6 @@
                     
 
                     </div>
-                    
-                    <div class="row text-center">
-
-                        <div class="col-12 mt-2">
-                            <a href="{% url 'products' %}"
-                                class="p-3 btn bg-dark text-white w-100 border-dark rounded-0">Check Out</a>
-
-                        </div>
-                        <div class="col-12 mt-1">
-                            <a href="{% url 'products' %}" class="btn-hover clr-grey text-white">Continue Shopping</a>
-                        </div>
-                        <br><br>
-
-                    </div>
 
 
             </div>
@@ -180,3 +181,13 @@
     </div>
 
 {% endblock %}
+
+{% block postloadjs %}
+
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+
+    
+{% endblock %} 

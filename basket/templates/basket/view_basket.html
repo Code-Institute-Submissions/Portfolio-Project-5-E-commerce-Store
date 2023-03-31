@@ -20,11 +20,11 @@
 
         <div class="row m-auto">
 
-          {% if basket_items %}
-
-          {% for item in basket_items %}
-
           <table class="table table-borderless">
+
+            {% if basket_items %}
+
+                
 
             <thead>
               <tr>
@@ -33,11 +33,12 @@
                 <th scope="col">Price</th>
                 <th scope="col">Qty</th>
                 <th scope="col">Total</th>
+                
               </tr>
             </thead>
 
             <tbody>
-
+              {% for item in basket_items %}
                 <tr>
 
                     <td>
@@ -99,18 +100,24 @@
                     </td>
 
                 </tr>
+              {% endfor %}
 
             </tbody>
 
-        </table>
+          </table>
 
-          {% endfor %}
+          
 
           {% else %}
 
           <p>Your basket is empty </p>
 
           {% endif %}
+
+          <div class="col-12 mt-2 text-right">
+            <a href="{% url 'checkout' %}" class="p-2 btn bg-dark text-white border-dark rounded-0 ml-100">Proceed to check out &nbsp; <i class="fa-solid fa-arrow-right"></i> </a>
+    
+          </div>
 
 
         </div>
