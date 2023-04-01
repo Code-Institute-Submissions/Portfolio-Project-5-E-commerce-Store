@@ -1,10 +1,10 @@
 // Stripe payment setup
 
-var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
+var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 
-var client_secret = $('#id_client_secret').text().slice(1, -1);
+var clientSecret = $('#id_client_secret').text().slice(1, -1);
 
-var stripe = Stripe(stripe_public_key, {
+var stripe = Stripe(stripePublicKey, {
     locale: 'en-GB',
 });
 
@@ -52,12 +52,12 @@ const appearance = {
 
 // Create and mount the Payment Element and Pass the appearance object to the Elements instance
 
-const paymentElement = elements.create('card', { appearance: appearance});
-paymentElement.mount('#payment-element');
+const card = elements.create('card', { appearance: appearance});
+card.mount('#payment-element');
 
 // Handle validation errors on card element
 
-paymentElement.addEventListener('change', function (e) {
+card.addEventListener('change', function (e) {
 
   var msgBox = document.getElementById('error-message');
 
@@ -70,3 +70,48 @@ paymentElement.addEventListener('change', function (e) {
   }
 
 })
+
+
+// Form Submit js
+
+const form = document.getElementById('payment-form');
+
+form.addEventListener('submit', function (event) {
+
+  event.preventDefault();
+
+  card.update({'disabled': true});
+
+  $('#submit-button').attr('disable', true);
+
+  stripe.confirmCardPayment(clientSecret, {
+
+    payment_method: {
+
+      card: card,
+
+    }
+
+  }).then(function(result) {
+
+    if (result.error) {
+
+      const messageContainer = document.querySelector('#error-message');
+
+      messageContainer.textContent = error.message;
+
+      card.update({'disabled': false});
+      
+      $('#submit-button').attr('disable', false);
+
+    } else {
+
+      if (result.paymentIntent.status === 'succeeded'){
+
+        form.submit();
+        
+    }
+
+    }
+  });
+});
