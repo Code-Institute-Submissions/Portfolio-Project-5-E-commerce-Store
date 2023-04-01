@@ -4,6 +4,12 @@ from .forms import OrderForm
 
 from django.contrib import messages
 
+from basket.contexts import basket_contents
+
+import stripe
+
+from django.conf import settings
+
 
 def checkout(request):
     """ A view that renders the checkout page """
@@ -12,6 +18,10 @@ def checkout(request):
     if not basket:
         messages.error(request, " There's nothing in your basket!")
         return redirect(reverse('products'))
+
+    current_basket = basket_contents(request)
+    total_amount = current_basket['order_total']
+    stripe_total = round(total_amount * 100) 
 
     order_form = OrderForm()
     context = {
