@@ -55,4 +55,18 @@ const appearance = {
 const paymentElement = elements.create('card', { appearance: appearance});
 paymentElement.mount('#payment-element');
 
+// Handle validation errors on card element
 
+paymentElement.addEventListener('change', function (e) {
+
+  var msgBox = document.getElementById('error-message');
+
+  if (e.error) {
+
+    $(msgBox).html(`<p class="alert alert-danger" role="alert"> <i class="fa-solid fa-square-xmark"></i> ${e.error.message} </p>`);
+
+  } else {
+    msgBox.textContent = '';
+  }
+
+})

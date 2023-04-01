@@ -102,24 +102,25 @@
                   <a class="dropdown-item clr-grey" href="#">Something else here</a>
                 </div>
               </li>
-              <li>
-                <div class="nav-item active d-flex">
-                  <div class="d-block">
+              <li class="nav-item active">
 
+                <a href="{% url 'view_basket' %}" class="nav-link clr-grey btn btn-outline-secondary">
+
+                  <i class="fa-solid fa-basket-shopping"></i>
+
+
+                  <div class="inline-flex badge badge-info">
                     {% if product_count %}
-                    <span class="m-0 badge badge-info badge-pill">
+
                       {{ product_count }}
-                    </span>
+
                     {% else %}
 
                     {% endif %}
-
-                    <a href="{% url 'view_basket' %}" class="nav-link m-0 clr-grey p-0">
-
-                      <i class="fa-solid fa-basket-shopping"></i>
-
-                    </a>
                   </div>
+
+                </a>
+
               </li>
             </ul>
           </div>
