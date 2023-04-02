@@ -53,7 +53,7 @@ def update_basket(request, product_id):
 
         basket[product_id] = product_quantity
 
-        messages.info(request, f'Quantity updated to ({product_quantity})!')
+        messages.info(request, f'Quantity updated to ({product_quantity})')
 
     else:
 

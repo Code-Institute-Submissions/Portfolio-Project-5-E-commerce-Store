@@ -108,16 +108,13 @@
 
                   <i class="fa-solid fa-basket-shopping"></i>
 
-
-                  <div class="inline-flex badge badge-info">
                     {% if product_count %}
 
-                      {{ product_count }}
+                      <span class="inline-flex badge badge-info">{{ product_count }}</span>
 
                     {% else %}
 
                     {% endif %}
-                  </div>
 
                 </a>
 
@@ -176,7 +173,7 @@
     {% endblock %}
 
     <!-- Footer -->
-    <footer class="container-fluid mt-3">
+    <footer class="container-fluid mt-auto">
 
       <div class="row bg-light mt-3 p-3">
 

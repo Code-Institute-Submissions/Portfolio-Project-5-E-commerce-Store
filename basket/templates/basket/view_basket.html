@@ -10,21 +10,21 @@
 
 {% block content %}
 
-    <div class="container-fluid mb-auto">
+    <div class="container-fluid  mb-auto">
 
-      <h1 class="h5"> Your Basket </h1>
+      <div class="row">
 
-      <hr>
+        <div class="col-12 p-0 m-0">
 
-      <br>
+          <h1 class="h5"> Your Basket </h1>
 
-        <div class="row m-auto">
+          <hr>
+
+          <br>
 
           <table class="table table-borderless">
 
             {% if basket_items %}
-
-                
 
             <thead>
               <tr>
@@ -33,94 +33,102 @@
                 <th scope="col">Price</th>
                 <th scope="col">Qty</th>
                 <th scope="col">Total</th>
-                
+
               </tr>
             </thead>
 
             <tbody>
               {% for item in basket_items %}
-                <tr>
+              <tr>
 
-                    <td>
+                <td>
 
-                      <a href="">
+                  <a href="">
 
-                        <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
-                        
-                      </a>
+                    <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
 
-                    </td>
+                  </a>
 
-                    <td>
+                </td>
 
-                      <a href="{{ item.product.get_absolute_url }}">
+                <td>
 
-                        <h6>{{ item.product.name }}</h6>
-      
-                      </a>
+                  <a href="{{ item.product.get_absolute_url }}">
 
-                    </td>
+                    <h6>{{ item.product.name }}</h6>
 
-                    <td>
+                  </a>
 
-                      <p> £ {{ item.product.price }}</p>
+                </td>
 
-                    </td>
+                <td>
 
-                    <td class="py-3 w-25">
-                      <form  class="form update-form" method="POST" action="{% url 'update_basket' item.product_id %}">
+                  <p> £ {{ item.product.price }}</p>
 
-                        <label>Qty:</label>
-                        
-                        {% csrf_token %}
+                </td>
 
-                        <select id="selected_{{product.id}}" name="quantity">
+                <td class="py-3 w-25">
+                  <form class="form update-form" method="POST" action="{% url 'update_basket' item.product_id %}">
 
-                          
-                            <option selected> {{item.quantity}}</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                    <label>Qty:</label>
 
-                        </select>
-                        
-                    </form>
+                    {% csrf_token %}
 
-                      <a class="update-button text-info"><small>Update</small></a>
+                    <select id="selected_{{product.id}}" name="quantity">
 
-                      <a href="{% url 'remove_product' item.product_id %}" class="remove-button text-danger float-right" data-id="{{ item.product_id }}"><small>Remove</small></a>
-                      
-                    </td>
-                    <td>
 
-                        <p> £ {{ item.product.price | mul:item.quantity }}</p>
+                      <option selected> {{item.quantity}}</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
 
-                    </td>
+                    </select>
 
-                </tr>
+                  </form>
+
+                  <a class="update-button text-info"><small>Update</small></a>
+
+                  <a href="{% url 'remove_product' item.product_id %}" class="remove-button text-danger float-right"
+                    data-id="{{ item.product_id }}"><small>Remove</small></a>
+
+                </td>
+                <td>
+
+                  <p> £ {{ item.product.price | mul:item.quantity }}</p>
+
+                </td>
+
+              </tr>
               {% endfor %}
 
             </tbody>
 
           </table>
 
-          
-
-          {% else %}
-
-          <p>Your basket is empty </p>
-
-          {% endif %}
-
           <div class="col-12 mt-2 text-right">
-            <a href="{% url 'checkout' %}" class="p-2 btn bg-dark text-white border-dark rounded-0 ml-100">Proceed to check out &nbsp; <i class="fa-solid fa-arrow-right"></i> </a>
-    
+            <a href="{% url 'checkout' %}" class="p-2 btn bg-dark text-white border-dark rounded-0 ml-100">Proceed to
+              check out &nbsp; <i class="fa-solid fa-arrow-right"></i> </a>
+
           </div>
 
 
+
+          {% else %}
+
+          <div class="col-12">
+
+            <p>Your basket is empty </p>
+
+          </div>
+
+          {% endif %}
+
+
         </div>
+
+      </div>
 
     </div>
 

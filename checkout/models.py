@@ -48,13 +48,11 @@ class Order(models.Model):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
-
         """
         Updates order total each time a order item is added,
         to account for delivery costs.
-
         """
-        self.total = self.orderitems.aggregate(Sum('orderitem_total'))['orderitem_total'] or 0
+        self.total = self.orderitems.aggregate(Sum('orderitem_total'))['orderitem_total__sum'] or 0
         sdp = settings.STANDARD_DELIVERY_PERCENTAGE
         self.delivery_cost = self.total * sdp / 100
         self.order_total = self.total + self.delivery_cost

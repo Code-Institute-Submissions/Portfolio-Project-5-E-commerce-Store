@@ -8,5 +8,4 @@ urlpatterns = [
 
     path('checkout/<order_number>', views.checkout_success, name='checkout_success'),
 
-
 ]

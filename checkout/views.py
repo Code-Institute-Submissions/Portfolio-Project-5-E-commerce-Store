@@ -59,16 +59,20 @@ def checkout(request):
 
                     product = get_object_or_404(Product, id=product_id)
 
-                    order_item = OrderItem(
+                    if isinstance(product_quantity, int):
 
-                        order=order,
+                        order_item = OrderItem(
 
-                        quantity=quantity,
+                            order=order,
 
-                        product=product,
+                            quantity=product_quantity,
 
-                    )
-                except Product.DoesNotExit:
+                            product=product,
+
+                        )
+                        order_item.save()
+
+                except Product.DoesNotExist:
 
                     messages.error(request, " We're Sorry! One of the product \
                          in your basket was not found in our database, please \
@@ -130,7 +134,7 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, f"Thank you for ordering. We received your order \
-         and will begin processing it soon. YOUR ORDER NO. {order_number}. A \
+         and will begin processing it soon. Your order no. {order_number}. A \
             confirmation email will be sent to {order.email}.")
 
     if 'basket' in request.session:
