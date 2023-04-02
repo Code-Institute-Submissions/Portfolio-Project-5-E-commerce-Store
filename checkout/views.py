@@ -78,7 +78,7 @@ def checkout(request):
 
                     return redirect(reverse('view_basket'))
 
-            request.session['save-address'] = 'save-address' in request.POST
+            request.session['save-details'] = 'save-details' in request.POST
 
             return redirect(reverse('checkout_success', args=[order.order_number]))
 
@@ -122,7 +122,23 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', context)
 
 
-def checkout_success(request):
+def checkout_success(request, order_number):
     """ This view is used for successful checkouts"""
 
-    save_address = 
+    save_details = request.session.get('save-details')
+
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.info(request, f"Thank you for ordering. We received your order \
+         and will begin processing it soon. YOUR ORDER NO. {order_number}. A \
+            confirmation email will be sent to {order.email}.")
+
+    if 'basket' in request.session:
+
+        del request.session['basket']
+
+    context = {
+        'order': order,
+    }
+
+    return render(request, 'checkout/checkout_success.html', context)
