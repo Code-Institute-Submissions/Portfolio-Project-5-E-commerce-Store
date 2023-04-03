@@ -72,6 +72,9 @@ card.addEventListener('change', function (e) {
 })
 
 
+
+
+
 // Form Submit js
 
 const form = document.getElementById('payment-form');
@@ -83,6 +86,10 @@ form.addEventListener('submit', function (event) {
   card.update({'disabled': true});
 
   $('#submit-button').attr('disable', true);
+
+  $('#payment-form').fadeToggle(100);
+
+  $('.spinner-container').addClass('show-spinner');
 
   stripe.confirmCardPayment(clientSecret, {
 
@@ -98,7 +105,11 @@ form.addEventListener('submit', function (event) {
 
       const messageContainer = document.querySelector('#error-message');
 
-      messageContainer.textContent = error.message;
+      $(messageContainer).html(`<p class="alert alert-danger" role="alert"> <i class="fa-solid fa-square-xmark"></i> ${result.error.message} </p>`);
+
+      $('#payment-form').fadeToggle(100);
+
+      $('.spinner-container').removeClass('show-spinner');
 
       card.update({'disabled': false});
       

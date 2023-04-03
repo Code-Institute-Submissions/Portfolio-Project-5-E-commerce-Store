@@ -49,11 +49,28 @@
                     <div class="card-header text-center"> <i class="fa-solid fa-house"></i> &nbsp; <strong> Shipping Address </strong></div>
                     <div class="card-body text-secondary">
                         <p> Address Line 1: {{ order.address1 | capfirst}}</p>
-                        <p> Address Line 2: {{ order.address2 | capfirst}}</p>
+
+                        {% if order.address2 %}
+
+                            <p> Address Line 2: {{ order.address2 | capfirst}}</p>
+
+                        {% endif %}
+
                         <p> City: {{ order.city | capfirst}}</p>
-                        <p> County:{{ order.county | capfirst}}</p>
+
+                        {% if order.county %}
+
+                            <p> County:{{ order.county | capfirst}}</p>
+
+                        {% endif %}
+
                         <p> Country: {{ order.country | capfirst}}</p>
-                        <p> Postal Code: {{ order.postal_code | capfirst}}</p>
+
+                        {% if order.postal_code %}
+
+                            <p> Postal Code: {{ order.postal_code | capfirst}}</p>
+
+                        {% endif %}
                     </div>
                 </div>
 
@@ -64,11 +81,29 @@
                     <div class="card-header text-center"> <i class="fa-solid fa-house"></i> &nbsp; <strong> Billing Address </strong></div>
                     <div class="card-body text-secondary">
                         <p> Address Line 1: {{ order.address1 | capfirst}}</p>
-                        <p> Address Line 2: {{ order.address2 | capfirst}}</p>
+
+                        {% if order.address2 %}
+
+                            <p> Address Line 2: {{ order.address2 | capfirst}}</p>
+
+                        {% endif %}
+
                         <p> City: {{ order.city | capfirst}}</p>
-                        <p> County: {{ order.county | capfirst}}</p>
+
+                        {% if order.county %}
+
+                            <p> County:{{ order.county | capfirst}}</p>
+
+                        {% endif %}
+
                         <p> Country: {{ order.country | capfirst}}</p>
-                        <p> Postal Code: {{ order.postal_code | capfirst}}</p>
+
+                        {% if order.postal_code %}
+
+                            <p> Postal Code: {{ order.postal_code | capfirst}}</p>
+
+                        {% endif %}
+
                     </div>
                 </div>
 
@@ -84,6 +119,8 @@
                             <p> <strong>Product name:</strong>  {{ item.product.name }}</p>
 
                             <p> <strong>Qty:</strong> {{ item.quantity}}</p>
+
+                            <p> <strong>Price:</strong> £ {{ item.product.price}}</p>
                         
                         {% endfor %}
                         <hr>
@@ -104,3 +141,5 @@
     </div>
 
 {% endblock %}
+
+
