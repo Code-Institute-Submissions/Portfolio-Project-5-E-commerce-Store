@@ -19,7 +19,7 @@
         <div class="row clr-gey p-3"></div>
 
 
-        <h1 class="text-center"> Thank you for ordering!</h1>
+        <h1 class="text-center"> Thank you for your order!</h1>
 
         <hr>
 
@@ -27,14 +27,77 @@
 
         <div class="row">
 
-            <div class="col-12 m-auto">
+            <div class="col-12 m-auto text-center">
 
-                <p> Your order number is {{order.order_number}} </p>
-                <p> We'll email you an order confirmation with details.</p>
+                <p> An email will be sent out to you, with order confirmation and details.</p>
+
+                <p> Your order #. <span class="badge badge-secondary">{{order.order_number}}</span> - Pending</p>
+
+                <p>Order Date: {{ order.date_ordered }}</p>
 
 
             </div>
 
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-4 col-sm-12 border-right">
+
+                <div class="card border-secondary mb-3">
+                    <div class="card-header text-center"> <i class="fa-solid fa-house"></i> &nbsp; <strong> Shipping Address </strong></div>
+                    <div class="card-body text-secondary">
+                        <p> Address Line 1: {{ order.address1 | capfirst}}</p>
+                        <p> Address Line 2: {{ order.address2 | capfirst}}</p>
+                        <p> City: {{ order.city | capfirst}}</p>
+                        <p> County:{{ order.county | capfirst}}</p>
+                        <p> Country: {{ order.country | capfirst}}</p>
+                        <p> Postal Code: {{ order.postal_code | capfirst}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-sm-12 border-right border-md-none">
+
+                <div class="card border-secondary mb-3">
+                    <div class="card-header text-center"> <i class="fa-solid fa-house"></i> &nbsp; <strong> Billing Address </strong></div>
+                    <div class="card-body text-secondary">
+                        <p> Address Line 1: {{ order.address1 | capfirst}}</p>
+                        <p> Address Line 2: {{ order.address2 | capfirst}}</p>
+                        <p> City: {{ order.city | capfirst}}</p>
+                        <p> County: {{ order.county | capfirst}}</p>
+                        <p> Country: {{ order.country | capfirst}}</p>
+                        <p> Postal Code: {{ order.postal_code | capfirst}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-sm-12">
+
+                <div class="card border-secondary mb-3">
+                    <div class="card-header text-center"> <i class="fa-solid fa-check"></i> &nbsp; <strong> Order
+                            Summmary </strong></div>
+                    <div class="card-body text-secondary">
+                        {% for item in order.orderitems.all %}
+
+                            <p> <strong>Product name:</strong>  {{ item.product.name }}</p>
+
+                            <p> <strong>Qty:</strong> {{ item.quantity}}</p>
+                        
+                        {% endfor %}
+                        <hr>
+                        <br>
+                        <div class="text-right">
+                            <p> Subtotal: £{{order.total}}</p>
+                            <p> Delivery: £{{order.delivery_cost}}</p>
+                            <p> <strong>Order Total:</strong> £{{order.order_total}}</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
