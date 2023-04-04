@@ -31,7 +31,7 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
 
             'basket': json.dumps(request.session.get('basket', {})),
-            'save_details': request.POST.get('save-details'),
+            'save_details': request.POST.get('save_details'),
             'username': request.user,
         })
 
@@ -80,7 +80,15 @@ def checkout(request):
 
         if order_form.is_valid():
 
-            order = order_form.save()
+            order = order_form.save(commit=False)
+
+            pid = request.POST.get('client_secret').split('_secret')[0]
+
+            order.strip_pid = pid
+
+            order.original_basket = json.dumps(basket)
+
+            order.save()
 
             for product_id, product_quantity in basket.items():
 
