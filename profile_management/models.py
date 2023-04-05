@@ -21,8 +21,6 @@ class UserProfile(models.Model):
 
     default_phone_number = models.CharField(max_length=30, null=True, blank=True)
 
-    default_country = CountryField(blank_label='Country *', null=True, blank=True)
-
     default_address1 = models.CharField(max_length=254, null=True, blank=True)
 
     default_address2 = models.CharField(max_length=254, null=True, blank=True)
@@ -32,6 +30,8 @@ class UserProfile(models.Model):
     default_county = models.CharField(max_length=254, null=True, blank=True)
 
     default_postal_code = models.CharField(max_length=50, null=True, blank=True)
+
+    default_country = CountryField(blank_label='Country', null=True, blank=True)
 
     def __str__(self):
 
