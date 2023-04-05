@@ -32,6 +32,8 @@ urlpatterns = [
 
     path('checkout/', include('checkout.urls')),
 
+    path('profile_management/', include('profile_management.urls')),
+
 
 
 

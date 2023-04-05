@@ -50,23 +50,21 @@ INSTALLED_APPS = [
     'home',
 
     # Products App
-
     'products',
 
     # Basket App
-
     'basket',
 
     # Checkout App
-
     'checkout',
 
-    # Django Mathfilters
+    # Profile Management App
+    'profile_management',
 
+    # Django Mathfilters
     'mathfilters',
 
     # Django Crispy-Forms
-
     'crispy_forms',
 
 
