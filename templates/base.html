@@ -90,20 +90,20 @@
 
               &nbsp;
 
-              <li class="nav-item dropdown ">
+              <li class="nav-item">
                 <a class="nav-link dropdown-toggle clr-grey" href="#" role="button" data-toggle="dropdown"
                   aria-expanded="false">
                   <i class="fa-solid fa-user"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  {% if request.user.is_authenticated %}
+                  
                     <a class="dropdown-item clr-grey" href="{% url 'view_profile' %}">My profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item clr-grey" href="{% url 'account_logout' %}">LogOut</a>
-                  {% else %}
+                  
                     <a class="dropdown-item clr-grey" href="{% url 'account_login' %}">LogIn</a>
                     <a class="dropdown-item clr-grey" href="{% url 'account_signup' %}">Register</a>
-                  {% endif %}
+                  
                   
                 </div>
               </li>
