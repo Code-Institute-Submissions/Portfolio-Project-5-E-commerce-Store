@@ -31,16 +31,23 @@ class OrderForm(forms.ModelForm):
 
             'county': 'County',
 
-            'country': 'Country',
-
             'postal_code': 'Postal Code',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
+
         for field in self.fields:
-            if self.fields[field].required:
-                placeholder = f'{placeholders[field]} *'
-            else:
-                placeholder = placeholders[field]
+
+            if field != 'country':
+
+                if self.fields[field].required:
+
+                    placeholder = f'{placeholders[field]} *'
+
+                else:
+
+                    placeholder = placeholders[field]
+
             self.fields[field].widget.attrs['placeholder'] = placeholder
+
             self.fields[field].label = False

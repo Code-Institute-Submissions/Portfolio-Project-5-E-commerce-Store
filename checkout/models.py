@@ -1,5 +1,7 @@
 from django.db import models
 
+from django_countries.fields import CountryField
+
 import uuid
 
 from products.models import Product
@@ -21,7 +23,7 @@ class Order(models.Model):
 
     phone_number = models.CharField(max_length=30, null=False, blank=False)
 
-    country = models.CharField(max_length=254, null=False, blank=False)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
 
     address1 = models.CharField(max_length=254, null=False, blank=False)
 
