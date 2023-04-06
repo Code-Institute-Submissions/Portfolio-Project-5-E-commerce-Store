@@ -14,6 +14,10 @@ from django.conf import settings
 
 from basket.contexts import basket_contents
 
+from profile_management.models import UserProfile
+
+from profile_management.forms import UserProfileForm
+
 import json
 
 import stripe
@@ -148,6 +152,34 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
 
         )
+
+        if request.user.is_authenticated:
+            try:
+
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+
+                    'full_name': profile.user.get_full_name(),
+
+                    'email': profile.user.email,
+                    
+                    'phone_number': profile.default_country,
+
+                    'postal_code': profile.default_postal_code,
+
+                    'city': profile.default_city,
+
+                    'address1': profile.default_address1,
+
+                    'address2': profile.default_address2,
+
+                    'county': profile.default_county,
+
+                })
+            except UserProfile.DoesNotExist:
+
+                order_form = OrderForm()
+
     if not stripe_public_key:
         messages.warning(request, "Stripe Public key missing, did you forget \
              to set variable?")
@@ -169,6 +201,39 @@ def checkout_success(request, order_number):
     save_details = request.session.get('save-details')
 
     order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user.is_authenticated:
+
+        profile = UserProfile.objects.get(user=request.user)
+
+        order.user_profile = profile
+
+        order.save()
+
+    if save_details:
+
+        profile_details = {
+
+            'default_phone_number': order.phone_number,
+
+            'default_country': order.country,
+
+            'default_postal_code': order.postal_code,
+
+            'default_city': order.city,
+
+            'default_address1': order.address1,
+
+            'default_address2': order.address2,
+
+            'default_county': order.county,
+        }
+
+        user_profile_form = UserProfileForm(profile_details, instance=profile)
+
+        if user_profile_form.is_valid():
+
+            user_profile_form.save()
 
     messages.info(request, f"Thank you for ordering. We received your order \
          and will begin processing it soon. Your order no. {order_number}. A \

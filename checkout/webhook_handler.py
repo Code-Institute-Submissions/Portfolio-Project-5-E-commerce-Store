@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, HttpResponse
 
 from products.models import Product
 
@@ -7,6 +7,8 @@ from .models import Order, OrderItem
 import time
 
 import json
+
+import stripe
 
 
 class StripeWH_Handler:
@@ -32,7 +34,7 @@ class StripeWH_Handler:
 
         # Get Charge object
         stripe_charge = stripe.Charge.retrieve(
-            intent.lastest_charge
+            intent.latest_charge
         )
 
         billing_details = stripe_charge.billing_details
@@ -43,7 +45,7 @@ class StripeWH_Handler:
 
         # Clean data in the shipping details
 
-        for field, value in shipping_details.address.item():
+        for field, value in shipping_details.address.items():
             if value == "":
                 shipping_details.address[field] = None
 
@@ -55,7 +57,8 @@ class StripeWH_Handler:
 
             try:
 
-                order = Order.object.get(
+                order = Order.objects.get(
+
                     full_name__iexact=shipping_details.name,
                     email__iexact=billing_details.email,
                     phone_number__iexact=shipping_details.phone,
@@ -91,7 +94,7 @@ class StripeWH_Handler:
 
                     order = Order.objects.create(
 
-                        full_name__iexact=shipping_details.name,
+                        full_name=shipping_details.name,
                         email=billing_details.email,
                         phone_number=shipping_details.phone,
                         country=shipping_details.address.country,

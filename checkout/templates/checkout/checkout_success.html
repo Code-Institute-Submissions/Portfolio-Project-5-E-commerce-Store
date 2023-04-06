@@ -116,11 +116,13 @@
                     <div class="card-body text-secondary">
                         {% for item in order.orderitems.all %}
 
-                            <p> <strong>Product name:</strong>  {{ item.product.name }}</p>
+                            <p> <strong>Name:</strong>  {{ item.product.name }}</p>
 
                             <p> <strong>Qty:</strong> {{ item.quantity}}</p>
 
                             <p> <strong>Price:</strong> £ {{ item.product.price}}</p>
+                            
+                            <hr>
                         
                         {% endfor %}
                         <hr>
@@ -138,6 +140,25 @@
 
         </div>
 
+    </div>
+
+    <div class="navbar navbar-expand-lg bg-light row mb-0">
+        <div>
+
+            <ul class="ml-100">
+
+                <li class="d-inline">
+                    <a href="{% url 'products' %}" class="btn-hover clr-grey"><i class="fa-solid fa-angle-left fa-xl"></i> Back to shop /</a>
+                </li>
+                <li class="d-inline">
+
+                    <a class="btn-hover clr-grey" href="{% url 'view_profile' %}">My profile</a>
+
+                </li>
+
+            </ul>
+
+        </div>
     </div>
 
 {% endblock %}
