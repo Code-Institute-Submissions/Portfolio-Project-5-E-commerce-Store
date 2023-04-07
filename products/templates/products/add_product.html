@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mb-auto ">
+
+      <h2>Manage Products</h2>
+
+      <hr>
+
+      <br>
+
+        <div class="row">
+
+            <div class="col-lg-6 col-md-12 mb-3">
+
+                <form method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {{form | crispy }}
+
+                </form>
+                <div class="float-right">
+
+                    <button class="btn bg-logo-red rounded-1" type="submit"> Add Product </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        
+
+        
+
+    </div>
+
+{% endblock %}

@@ -11,7 +11,7 @@ class ProductForm(forms.ModelForm):
 
         fields = '__all__'
 
-        exclude = ('date')
+        exclude = ('date',)
 
     def __init__(self, *args, **kwargs):
 
