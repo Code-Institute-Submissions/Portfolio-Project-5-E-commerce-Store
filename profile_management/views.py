@@ -23,9 +23,15 @@ def view_profile(request):
 
             form.save()
 
-            messages.info(request, " Profile updated successfully")
+            messages.info(request, 'Profile updated successfully')
 
-    form = UserProfileForm(instance=profile)
+        else:
+            messages.error(request, 'Unable to update profile,\
+                           please check form is valid.')
+
+    else:
+
+        form = UserProfileForm(instance=profile)
 
     orders = profile.orders.all()
 
@@ -60,4 +66,3 @@ def order_history(request, order_number):
     }
 
     return render(request, 'checkout/checkout_success.html', context)
-

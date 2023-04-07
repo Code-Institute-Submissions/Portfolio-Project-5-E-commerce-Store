@@ -23,12 +23,21 @@
     <div class="row toast-body">
 
       <div class="col-10 ml-3 d-inline-flex">
-
+        {% if item.product.image %}
         <a href="{{ item.product.image.url}}">
 
           <img src="{{ item.product.image.url}}" width="50px" class="rounded mr-2" alt="{{ item.product.name }}">
 
         </a>
+
+        {% else %}
+
+        <a>
+
+            <img src="{{ MEDIA_URL }}noimage.png" width="50px" class="rounded mr-2" alt="{{ item.product.name }}">
+  
+        </a>
+        {% endif %}
 
         <div class="d-block mt-0">
 

@@ -61,6 +61,9 @@ INSTALLED_APPS = [
     # Profile Management App
     'profile_management',
 
+    # Store Management App
+    'store_management',
+
     # Django Mathfilters
     'mathfilters',
 

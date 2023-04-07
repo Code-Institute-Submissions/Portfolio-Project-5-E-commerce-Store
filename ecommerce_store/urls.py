@@ -34,6 +34,8 @@ urlpatterns = [
 
     path('profile_management/', include('profile_management.urls')),
 
+    path('store_management/', include('store_management.urls')),
+
 
 
 

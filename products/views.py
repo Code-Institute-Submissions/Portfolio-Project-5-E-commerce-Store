@@ -6,8 +6,6 @@ from django.db.models import Q
 
 from .models import Product, Category
 
-from .forms import ProductForm
-
 
 def all_products(request):
     """ A view that displays all product to customers"""
@@ -75,17 +73,3 @@ def product_detail(request, product_slug):
     }
 
     return render(request, "products/product_detail.html", context)
-
-
-def add_product(request):
-
-    """ Add's products to the store """
-
-    form = ProductForm()
-
-    context = {
-
-        'form': form,
-    }
-
-    return render(request, 'products/add_product.html', context)

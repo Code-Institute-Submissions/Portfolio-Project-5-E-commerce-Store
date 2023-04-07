@@ -2,6 +2,8 @@ from django.db import models
 
 from django.shortcuts import reverse
 
+from django.utils.text import slugify
+
 
 product_sizes = (
 
@@ -40,7 +42,7 @@ class Product(models.Model):
 
     description = models.TextField(blank=True)
 
-    slug = models.SlugField(max_length=254)
+    slug = models.SlugField(max_length=254, db_index=True, blank=True)
 
     size = models.CharField(max_length=20, choices=product_sizes, default='4X6IN (10X15CM)')
 
@@ -61,3 +63,8 @@ class Product(models.Model):
     def get_absolute_url(self):
 
         return reverse('product_detail', args=[self.slug])
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
