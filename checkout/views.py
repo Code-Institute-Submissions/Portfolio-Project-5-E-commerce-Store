@@ -180,11 +180,14 @@ def checkout(request):
 
                 order_form = OrderForm()
 
+        else:
+
+            order_form = OrderForm()
+
     if not stripe_public_key:
         messages.warning(request, "Stripe Public key missing, did you forget \
              to set variable?")
 
-    order_form = OrderForm()
     context = {
         'order_form':  order_form,
         'stripe_public_key': stripe_public_key,
