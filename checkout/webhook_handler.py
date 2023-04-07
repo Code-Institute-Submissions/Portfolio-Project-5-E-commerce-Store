@@ -1,5 +1,11 @@
 from django.shortcuts import get_object_or_404, HttpResponse
 
+from django.core.mail import send_mail
+
+from django.template.loader import render_to_string
+
+from django.conf import settings
+
 from products.models import Product
 
 from .models import Order, OrderItem
@@ -18,6 +24,25 @@ class StripeWH_Handler:
 
     def __init__(self, request):
         self.request = request
+
+    def _send_confirmation_email(self, order):
+        """ This method sends the user a confirmation email"""
+
+        user_email = order.email
+        subject = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_subject.txt',
+            {'order': order})
+
+        body = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.txt',
+            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [user_email]
+        )
 
     def handle_event(self, event):
         """ Handle's all generic/unknown/unexpected webhook event """
@@ -112,6 +137,8 @@ class StripeWH_Handler:
 
             if order_exists:
 
+                self._send_confirmation_email(order)
+
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]}\
                         | SUCCESS: Verified order already in database',
@@ -125,16 +152,27 @@ class StripeWH_Handler:
                     order = Order.objects.create(
 
                         full_name=shipping_details.name,
+
                         user_profile=profile,
+
                         email=billing_details.email,
+
                         phone_number=shipping_details.phone,
+
                         country=shipping_details.address.country,
+
                         address1=shipping_details.address.line1,
+
                         address2=shipping_details.address.line2,
+
                         city=shipping_details.address.city,
+
                         county=shipping_details.address.state,
+
                         postal_code=shipping_details.address.postal_code,
+
                         original_basket=basket,
+
                         stripe_pid=pid,
 
                     )
@@ -155,11 +193,17 @@ class StripeWH_Handler:
 
                             )
                             order_item.save()
+
                 except Exception as e:
+
                     if order:
+
                         order.delete()
+
                     return HttpResponse(content=f'Webhook received: \
                         {event["type"]}| ERROR: {e}', status=500)
+
+        self._send_confirmation_email(order)
 
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS:\

@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-joha-will-portfolio-proj-l75uw6qlln.us2.codeanyapp.com']
+ALLOWED_HOSTS = ['8000-joha-will-portfolio-proj-8kjesa49oi.us2.codeanyapp.com']
 
 
 # Application definition
@@ -201,6 +201,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 STANDARD_DELIVERY_PERCENTAGE = 10
+
+DEFAULT_FROM_EMAIL = 'jelav15383@duiter.com'
 
 # Stripe
 
