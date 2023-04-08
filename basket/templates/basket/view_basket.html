@@ -42,22 +42,12 @@
               <tr>
 
                 <td>
-                    {% if item.product.image %}
                     
-                        <a href="">
-
-                            <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
-
-                        </a>
-                  {% else %}
-
                     <a href="">
 
-                        <img src="{{ MEDIA_URL }}noimage.png" width="100px" class="img-fluid" alt="{{ product.name }}">
+                        <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
 
                     </a>
-
-                  {% endif %}
 
                 </td>
 

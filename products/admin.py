@@ -5,14 +5,16 @@ from .models import Category, Product
 
 class CategoryAdmin(admin.ModelAdmin):
 
-    list_display = ('category_name', 'slug',)
+    list_display = ('category_name',)
 
-    prepopulated_fields = {'slug': ('category_name',)}
+    readonly_fields = ('slug',)
 
 
 class ProductAdmin(admin.ModelAdmin):
 
-    list_display = ('name', 'model_name', 'category', 'description', 'slug', 'size', 'image', 'price',)
+    list_display = ('name', 'model_name', 'category', 'description', 'size', 'image', 'price',)
+
+    readonly_fields = ('slug',)
 
 
 admin.site.register(Category, CategoryAdmin)

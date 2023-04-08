@@ -4,20 +4,28 @@ from django.shortcuts import reverse
 
 from django.utils.text import slugify
 
+from .fields import CaseInsensitiveCharField
+
+from django.core.validators import RegexValidator
+
 
 product_sizes = (
 
-    ('4X6IN (10X15CM)', '4X6IN (10X15CM)'),
-    ('5X7IN (13X18CM)', '5X7IN (13X18CM)'),
-    ('8X10IN (20X25CM)', '8X10IN (20X25CM)'),
+    ('4 x 6 inches', '4 x 6 inches'),
+    ('5 x 7 inches', '5 x 7 inches'),
+    ('8 x 10 inches', '8 x 10 inches'),
+    ('8.5 x 11 inches', '8.5 x 11 inches'),
 )
+
+# This line Code (alphanumeric) is from Martin peters Stack overflow
+alphanumeric = RegexValidator(r'^[0-9a-zA-Z ]*$', 'Only alphanumeric characters are allowed.')
 
 
 class Category(models.Model):
 
-    category_name = models.CharField(max_length=254, db_index=True)
+    category_name = CaseInsensitiveCharField(max_length=254, db_index=True, unique=True, validators=[alphanumeric])
 
-    slug = models.SlugField(max_length=254, unique=True)
+    slug = models.SlugField(max_length=254, blank=False, null=False, db_index=True)
 
     class Meta:
 
@@ -31,10 +39,15 @@ class Category(models.Model):
 
         return reverse('search_category', args=[self.slug])
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.category_name)
+        return super().save(*args, **kwargs)
+
 
 class Product(models.Model):
 
-    name = models.CharField(max_length=254)
+    name = CaseInsensitiveCharField(max_length=254, unique=True, validators=[alphanumeric])
 
     model_name = models.CharField(max_length=254, blank=True, null=True)
 
@@ -42,11 +55,11 @@ class Product(models.Model):
 
     description = models.TextField(blank=True)
 
-    slug = models.SlugField(max_length=254, db_index=True, blank=True)
+    slug = models.SlugField(max_length=254, blank=False, null=False, db_index=True)
 
-    size = models.CharField(max_length=20, choices=product_sizes, default='4X6IN (10X15CM)')
+    size = models.CharField(max_length=20, choices=product_sizes, default='4 x 6 inches')
 
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=False, blank=False)
 
     price = models.DecimalField(max_digits=6, decimal_places=2)
 

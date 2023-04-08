@@ -5,6 +5,9 @@ from products.models import Product, Category
 
 class ProductForm(forms.ModelForm):
 
+    # This first line of Code (name) is from Javed [Stack over flow]
+    name = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':'form-control' , 'autocomplete': 'off', 'pattern':'^[A-Za-z0-9 ]+$', 'title':'This field can only contain numbers and letters. '}))
+
     class Meta:
 
         model = Product

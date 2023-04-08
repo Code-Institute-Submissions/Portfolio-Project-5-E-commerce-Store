@@ -12,11 +12,11 @@
 
       <h2>Manage Products</h2>
 
-      <hr>
-
       <br>
 
-      <h6><u> Add a product </u></h6>
+      <h6><u> Edit Product </u></h6>
+
+      <hr>
 
       <br>
 
@@ -24,14 +24,14 @@
 
             <div class="col-lg-6 col-md-12 mb-3">
 
-                <form method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'edit_product' product.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     {{form | crispy }}
 
                     <div class="float-right">
 
-                        <button class="btn bg-logo-red rounded-1" type="submit"> Add Product </button>
+                        <button class="btn bg-logo-red rounded-1" type="submit"> Update Product </button>
     
                     </div>
 

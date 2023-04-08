@@ -1,6 +1,7 @@
 asgiref==3.6.0
 Django==3.2
 django-allauth==0.41.0
+django-case-insensitive-field==1.0.7
 django-countries==7.2.1
 django-crispy-forms==1.14.0
 django-mathfilters==1.0.0
