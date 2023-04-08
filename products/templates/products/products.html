@@ -40,6 +40,14 @@
                             <a href="#" class="card-link">Card link</a>
                             <a href="#" class="card-link">Another link</a>
                         </div>
+
+                        {% if request.user.is_superuser %}
+                            <div>
+                                <a href="{% url 'edit_product' product.id %}"> Edit Product </a>
+
+                                <a href="{% url 'delete_product' product.slug %}"> Delete Product </a>
+                            </div>
+                        {% endif %}
                     </div>
 
 

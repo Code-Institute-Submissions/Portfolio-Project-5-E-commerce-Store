@@ -17,11 +17,11 @@ def add_product(request):
 
         if form.is_valid():
 
-            form.save()
+            product = form.save()
 
             messages.info(request, 'Product added successfully!')
 
-            return redirect(reverse('add_product'))
+            return redirect(reverse('products'))
 
         else:
 
@@ -77,3 +77,16 @@ def edit_product(request, product_id):
     }
 
     return render(request, 'store_management/edit_product.html', context)
+
+
+def delete_product(request, product_slug):
+
+    """ Delete product's from the store """
+
+    product = get_object_or_404(Product, slug=product_slug)
+
+    product.delete()
+
+    messages.info(request, 'Product deleted successfully.')
+
+    return redirect(reverse('products'))
