@@ -1,5 +1,7 @@
 from django import forms
 
+from .models import Comment
+
 from products.models import Product, Category
 
 
@@ -35,6 +37,37 @@ class ProductForm(forms.ModelForm):
             'image': 'Image',
 
             'price': 'Price',
+        }
+
+        for field in self.fields:
+
+            placeholder = placeholders[field]
+
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+
+            self.fields[field].label = False
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Comment
+
+        fields = ('title', 'user_name', 'content',)
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        placeholders = {
+
+            'title': 'Title',
+
+            'user_name': 'Username',
+
+            'content': 'Comment',
+
         }
 
         for field in self.fields:

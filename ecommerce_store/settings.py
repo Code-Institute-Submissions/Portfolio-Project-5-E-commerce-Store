@@ -106,6 +106,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'products.views.all_categories',
+                'store_management.views.post_comment',
                 'basket.contexts.basket_contents',
             ],
             'builtins': [

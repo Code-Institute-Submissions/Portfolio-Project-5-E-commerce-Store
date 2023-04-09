@@ -4,9 +4,11 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required 
 
-from .forms import ProductForm
+from .forms import ProductForm, CommentForm
 
 from products.models import Product, Category
+
+from .models import Comment
 
 
 @login_required
@@ -114,3 +116,38 @@ def delete_product(request, product_slug):
     messages.info(request, 'Product deleted successfully.')
 
     return redirect(reverse('products'))
+
+
+@login_required
+def post_comment(request):
+
+    """ A view to comment on store products """
+
+    comments = Comment.objects.all()
+
+    if request.method == 'POST':
+
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            messages.info(request, 'Comment posted successfully!')
+
+            return redirect(reverse('products'))
+
+        else:
+
+            messages.error(request, 'Unable to post comment.\
+                            Please check form is valid.')
+
+    else:
+
+        form = CommentForm()
+
+    context = {
+        'comments': comments
+    }
+
+    return context

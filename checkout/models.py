@@ -4,8 +4,6 @@ from django_countries.fields import CountryField
 
 import uuid
 
-from products.models import Product
-
 from django.contrib.auth.models import User
 
 from django.conf import settings
@@ -13,6 +11,8 @@ from django.conf import settings
 from django.db.models import Sum
 
 from profile_management.models import UserProfile
+
+from products.models import Product
 
 
 class Order(models.Model):
