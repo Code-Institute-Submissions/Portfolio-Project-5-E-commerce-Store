@@ -9,3 +9,9 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('title', 'user_name', 'content', 'posted_on', 'approved',)
 
     readonly_fields = ('product',)
+
+    list_filter = ('posted_on', 'approved',)
+
+    def approve_comments(self, request, queryset):
+
+        queryset.update(approved=True)

@@ -119,23 +119,29 @@ def delete_product(request, product_slug):
 
 
 @login_required
-def post_comment(request):
+def add_comment(request, product_id):
 
     """ A view to comment on store products """
 
-    comments = Comment.objects.all()
+    product = get_object_or_404(Product, id=product_id)
+
+    user_comment = None
 
     if request.method == 'POST':
 
-        form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST)
 
-        if form.is_valid():
+        if comment_form.is_valid():
 
-            form.save()
+            user_comment = comment_form.save(commit=False)
+
+            user_comment.product = product
+
+            user_comment.save()
 
             messages.info(request, 'Comment posted successfully!')
 
-            return redirect(reverse('products'))
+            return redirect(reverse('products', ))
 
         else:
 
@@ -144,10 +150,11 @@ def post_comment(request):
 
     else:
 
-        form = CommentForm()
+        comment_form = CommentForm()
 
     context = {
-        'comments': comments
+        'comment_form': comment_form,
+        'user_comment': user_comment,
     }
 
-    return context
+    return render(request, 'store_management/add_comment.html', context)

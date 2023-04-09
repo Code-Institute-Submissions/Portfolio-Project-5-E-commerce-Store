@@ -6,6 +6,8 @@ from django.db.models import Q
 
 from .models import Product, Category
 
+from store_management.models import Comment
+
 
 def all_products(request):
     """ A view that displays all product to customers"""
@@ -68,8 +70,11 @@ def product_detail(request, product_slug):
 
     product = get_object_or_404(Product, slug=product_slug)
 
+    comments = Comment.objects.filter(product=product)
+
     context = {
         'product': product,
+        'comments': comments,
     }
 
     return render(request, "products/product_detail.html", context)
