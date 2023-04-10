@@ -13,4 +13,6 @@ urlpatterns = [
 
     path('<product_id>/add_comment/', views.add_comment, name='add_comment'),
 
+    path('newsletter/', views.newsletter, name='newsletter'),
+
 ]

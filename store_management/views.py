@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 from django.contrib import messages
 
-from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.decorators import login_required
 
-from .forms import ProductForm, CommentForm
+from .forms import ProductForm, CommentForm, NewsletterForm, ContactForm
 
 from products.models import Product, Category
 
@@ -162,3 +162,37 @@ def add_comment(request, product_id):
     }
 
     return render(request, 'store_management/add_comment.html', context)
+
+
+@login_required
+def newsletter(request):
+
+    """ A view that renders a newsletter form """
+
+    if request.method == 'POST':
+
+        subscribe_form = NewsletterForm(request.POST)
+
+        if subscribe_form.is_valid():
+
+            subscribe_form.save()
+
+            messages.info(request, 'Successfully subscribe to our newsletter.')
+
+            return redirect(reverse('home'))
+
+        else:
+
+            messages.error(request, 'Unable to subcribe\
+                            Please check form is valid.')
+
+    else:
+
+        subscribe_form = NewsletterForm()
+
+    context = {
+
+        'subscribe_form': subscribe_form,
+    }
+
+    return render(request, 'base.html', context)

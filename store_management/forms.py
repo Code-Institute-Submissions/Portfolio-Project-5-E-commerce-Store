@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Comment
+from .models import Comment, Newsletter, Contact
 
 from products.models import Product, Category
 
@@ -67,6 +67,66 @@ class CommentForm(forms.ModelForm):
             'user_name': 'Username',
 
             'content': 'Comment',
+
+        }
+
+        for field in self.fields:
+
+            placeholder = placeholders[field]
+
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+
+            self.fields[field].label = False
+
+
+class NewsletterForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Newsletter
+
+        fields = ('email_address',)
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        placeholders = {
+
+            'email_address': 'Email',
+
+        }
+
+        for field in self.fields:
+
+            placeholder = placeholders[field]
+
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+
+            self.fields[field].label = False
+
+
+class ContactForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Contact
+
+        fields = ('name', 'email_address', 'tel_number', 'message',)
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        placeholders = {
+
+            'name': 'Name',
+
+            'email_address': 'Email',
+
+            'tel_number': 'Phone number',
+
+            'message': 'Message',
 
         }
 

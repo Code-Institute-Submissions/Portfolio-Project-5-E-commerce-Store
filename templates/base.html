@@ -214,25 +214,42 @@
 
           <div class="col-12 p-3 mt-5">
 
-              <h4 class="text-cente mr-auto">Our Location</h4>
+              <h4 class="text-cente mr-auto">Subscribe to our letter!</h4>
 
-              <hr class="mt-0 cl-black">
+              <small>Stay updated with our lastest deals and offers.</small>
 
-              <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus excepturi rem facere non? Harum temporibus excepturi cum nisi sed quaerat consectetur exercitationem repellendus voluptatum distinctio, dicta iusto aut aspernatur suscipit. </p>
+              <div class="col-12">
 
-              
+                <form method="POST" action="{% url 'newsletter' %}">
+                    {% csrf_token %}
+
+                    {{subscribe_form|crispy }}
+
+                    <div>
+
+                        <button class="btn bg-logo-red rounded-1" type="submit"> Subscribe </button>
+    
+                    </div>
+
+                </form>
+                
+
+            </div>
+
+            <hr class="mt-0 cl-black">
 
           </div>
 
 
           <hr class="mt-0">
 
-          <div class="m-auto">
+          <div class="row">
 
             <hr class="mt-0">
 
-            <small>&copy; Copyright 2023. Joha Wilson. This project is made for educational purposes only. No commercial revenue is generated from the project.</small>
-
+            <div class="col-12">
+                <small>&copy; Copyright 2023. Joha Wilson. This project is made for educational purposes only. No commercial revenue is generated from the project.</small>
+            </div>
           </div>
 
           
