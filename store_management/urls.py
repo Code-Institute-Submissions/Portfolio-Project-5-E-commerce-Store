@@ -15,4 +15,8 @@ urlpatterns = [
 
     path('newsletter/', views.newsletter, name='newsletter'),
 
+    path('contact_form/', views.contact_form, name='contact_form'),
+
+
+
 ]

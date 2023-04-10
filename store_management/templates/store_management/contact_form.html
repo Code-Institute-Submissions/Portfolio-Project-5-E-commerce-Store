@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mb-auto ">
+
+      <br>
+
+      <h6><u> Contact Us </u></h6>
+
+      <br>
+
+        <div class="row">
+
+            <div class="col-lg-6 col-md-12 mb-3">
+
+                <form method="POST" action="{% url 'contact_form' %}">
+                    {% csrf_token %}
+
+                    {{contact_form | crispy }}
+
+                    <div class="float-right">
+
+                        <button class="btn bg-logo-red rounded-1" type="submit"> Submit </button>
+    
+                    </div>
+
+                </form>
+                
+
+            </div>
+
+
+        </div>
+
+        
+
+        
+
+    </div>
+
+{% endblock %}

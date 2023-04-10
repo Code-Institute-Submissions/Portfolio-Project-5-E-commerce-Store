@@ -196,3 +196,42 @@ def newsletter(request):
     }
 
     return render(request, 'base.html', context)
+
+
+@login_required
+def contact_form(request):
+
+    """ Contact form view """
+
+    contact_form = ContactForm()
+
+    if request.method == 'POST':
+
+        contact_form = ContactForm(request.POST)
+
+        if contact_form.is_valid():
+
+            customer = contact_form.save(commit=False)
+
+            customer.user = request.user
+
+            contact_form.save()
+
+            messages.info(request, 'Message sent successfully, a member of\
+                staff will get back to you shortly.')
+
+            return redirect(reverse('contact_form',))
+
+        else:
+
+            messages.error(request, 'Unable to send message.\
+                            Please check form is valid.')
+    else:
+
+        contact_form = ContactForm()
+
+    context = {
+        'contact_form': contact_form,
+    }
+
+    return render(request, 'store_management/contact_form.html', context)
