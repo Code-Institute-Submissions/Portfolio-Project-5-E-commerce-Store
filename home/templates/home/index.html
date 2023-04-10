@@ -2,36 +2,52 @@
 
 {% load static %}
 
+{% block extra_css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
+{% endblock %}
+
 {% block page_header %}
 
 {% endblock %}
 
 {% block content %}
 
-    <div class="container-fluid">
-
+    <div class="container">
+    
         <div class="row">
-
-
-            <div class="col-12 p-0 m-0 index-bg-img-1 text-center ">
-
-
-                <div>
-                    <h1> Shop our latest now </h1>
+    
+            <div class="col-12" id="home-background">
+                <div class="row">
+    
+                    <div class="col-lg-3 p-2">
+    
+                        <img src="{{MEDIA_URL}}bg-3.jpeg" class="img-fluid" alt="...">
+    
+                    </div>
+                    <div class="col-lg-3 p-2">
+    
+                        <img src="{{MEDIA_URL}}bg-5.jpeg" class="img-fluid" alt="...">
+    
+                    </div>
+                    <div class="col-lg-3 p-2">
+    
+                        <img src="{{MEDIA_URL}}bg-4.jpeg" class="img-fluid" alt="...">
+    
+                    </div>
+                    <div class="col-lg-3 p-2">
+    
+                        <img src="{{MEDIA_URL}}bg-3.jpeg" class="img-fluid" alt="...">
+    
+                    </div>
+    
                 </div>
 
             </div>
-
-            <!----
-            <div class="col-6 m-0 p-0 index-bg-img-2">
-
-
-
-            </div>
-            ---->
-
+    
         </div>
-
+    
     </div>
 
 {% endblock %}

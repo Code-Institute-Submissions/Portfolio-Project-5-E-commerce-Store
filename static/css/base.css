@@ -66,25 +66,8 @@ a:link {
 
 }
 
-/** -------------------------------------Background Images **/
 
-.index-bg-img-1 {
-    background-image: url('');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 60vh;
-}
 
-/**
-.index-bg-img-2 {
-    background-image: url('/media/homeimg2.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 500px;
-}
-**/
 
 /** -------------------------------------Footer Section **/
 
@@ -101,6 +84,14 @@ a:link {
 
 .nav-links:hover {
     color: #C35355 !important;
+}
+
+
+#footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background: #6cf
 }
 
 
