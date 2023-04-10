@@ -3,3 +3,8 @@ a {
     color: #4C4C4C!important;
     cursor: pointer;
 }
+
+a:link img {
+   max-width: 400px;
+   max-height: 400px;
+}

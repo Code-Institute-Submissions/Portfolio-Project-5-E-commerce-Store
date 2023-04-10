@@ -15,55 +15,65 @@
 {% block content %}
 
     <div class="container-fluid  mb-auto">
-
+    
         <div class="row">
-
+    
             <div class="col-12 mb-3 mt-2">
                 <h4> <u>All products</u></h4>
             </div>
-
+    
             {% for product in products %}
+            <div class="col-lg-4 col-md-12 col-sm-12 mb-3 ">
 
-                    <div class="card col-lg-4 col-md-6 col-sm-12 p-0 ml-auto mr-auto mb-3 " style="width: auto; height: auto;">
-
+                <div class="card ml-auto mr-auto mb-3" style="max-width:400px; height: fit-content;">
+    
+                    <a href="{{ product.get_absolute_url }}">
+    
+                        <img src="{{ product.image.url}}" class="card-img-top img-fluid" alt="{{ product.name }}">
+    
+                    </a>
+    
+                    <div class="p-2 mt-2">
+    
                         <a href="{{ product.get_absolute_url }}">
-
-                            <img src="{{ product.image.url}}" class="card-img-top" alt="{{ product.name }}">
-                            
+    
+                            <h6 class="card-title"><strong> {{ product.name|capfirst }}</strong></h6>
+    
                         </a>
-
-                        <div class="p-2 mt-2">
-                            
-                            <a href="{{ product.get_absolute_url }}">
-
-                                <h6 class="card-title"><strong> {{ product.name | capfirst }}</strong></h6>
-
-                            </a>
-
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item p-2"><strong>Category: </strong>{{ product.category | capfirst }}</li>
-                            <li class="list-group-item p-2"><strong>Size: </strong>{{ product.size  }}</li>
-                            <li class="list-group-item p-2"><strong>Price: </strong>£{{ product.price }}</li>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-
-                        {% if request.user.is_superuser %}
-                            <div>
-                                <a href="{% url 'edit_product' product.id %}"> Edit Product </a>
-
-                                <a href="{% url 'delete_product' product.slug %}"> Delete Product </a>
-                            </div>
-                        {% endif %}
+    
                     </div>
-
+                    <ul class="list-group list-group-flush">
+                        {% if product.category %}
+                        <li class="list-group-item p-2"><strong>Category: </strong>{{ product.category|capfirst }}
+                        </li>
+                        {% endif %}
+                        {% if product.model_name %}
+                        <li class="list-group-item p-2"><strong>Model Name:
+                            </strong>{{ product.model_name|capfirst }}</li>
+                        {% endif %}
+                        <li class="list-group-item p-2"><strong>Size: </strong>{{ product.size  }}</li>
+                        <li class="list-group-item p-2"><strong>Price: </strong>£{{ product.price }}</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+    
+                    {% if request.user.is_superuser %}
+                    <div>
+                        <a href="{% url 'edit_product' product.id %}"> Edit Product </a>
+    
+                        <a href="{% url 'delete_product' product.slug %}"> Delete Product </a>
+                    </div>
+                    {% endif %}
+                </div>
+    
+            </div>
             {% endfor %}
-
+    
+    
         </div>
-
+    
     </div>
 
 {% endblock %}
