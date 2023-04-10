@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Alegreya SC', serif;
+    color:#4C4C4C;
 }
 
 header {
@@ -37,6 +38,7 @@ ul {
 
 a:link {
     text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-outline-secondary.btn {
