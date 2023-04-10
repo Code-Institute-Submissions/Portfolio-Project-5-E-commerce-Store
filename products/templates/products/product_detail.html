@@ -9,53 +9,56 @@
 
         <div class="row">
 
-            <div class="col-5">
-
-                <a href="{{ product.image.url }}" target="_blank"> <img class="img-fluid mx-auto" alt="{{ product.name }}" src="{{ product.image.url }}"> </a>
-
+            <div class="col-lg-5 col-md-12 p-0 m-0">
+            
+                <div class="p-2">
+            
+                    <a href="{{ product.image.url }}" target="_blank"> <img class="img-fluid mx-auto" alt="{{ product.name }}"
+                            src="{{ product.image.url }}"> </a>
+            
+                </div>
+            
             </div>
-
-            <div class="col-5">
-
-                <h1> {{product.name}} </h1>
-
+            
+            <div class="col-lg-5 col-md-12 p-0 m-0">
+            
+                <h1 class="p-2"> {{product.name}} </h1>
+            
                 <hr>
-
-                <p> {{ product.description }} </p>
-
+            
                 <div class="border">
-
+            
                     <div class="col border-bottom">
-
+            
                         <div class="row p-3">
-
+            
                             <div class="col-6"> Price </div>
-
+            
                             <div class="col-6 "><span>$ {{product.price}} </span></div>
-
+            
                         </div>
-
+            
                         <div class="row p-3">
-
+            
                             <div class="col-6"> Size</div>
-
+            
                             <div class="col-6 "><span>$ {{product.size}} </span></div>
-
+            
                         </div>
-
+            
                     </div>
-
+            
                 </div>
 
                 <div>
 
-                    <form method="POST" action="{% url 'add_to_basket' product.id %}">\
+                    <form method="POST" action="{% url 'add_to_basket' product.id %}">
 
-                        <label>Qty:</label>
+                        <label class="ml-2">Qty:</label>
                         
                         {% csrf_token %}
 
-                        <select id="selected_{{product.id}}" name="quantity">
+                        <select id="selected_{{product.id}}" name="quantity" class="p-1 ">
 
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -67,32 +70,84 @@
 
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
 
-                        <input type="submit" class="btn" value="Add to Basket">
+                        <input type="submit" class="btn bg-logo-red rounded-1 float-right mr-1" value="Add to Basket">
                     </form>
+                    <hr>
 
                 </div>
 
+                <div class="row m-0">
+
+                    <div class="col-10">
+
+                        <p> {{ product.description }} </p>
+
+                    </div>
+                    
                 </div>
 
             </div>
 
+
         </div>
+
+        <br><br>
 
         <div class="row">
-            {% if approved %}
-            <div class="col-lg-12 col-md-12">
-                <a href="{% url 'add_comment' product.id %}"> Add comment</a>
-                {% for comment in comments %}
-                    {{ comment }}
-                {% endfor %}
+        
+            <div class="col-lg-8 col-md-12">
+                {% if request.user.is_authenticated %}
+                <div class="row">
+        
+                    <div class="col-12 text-center">
+
+                        <hr>
+        
+                        <a href="{% url 'add_comment' product.id %}" class="btn bg-logo-red rounded-1"> Add
+                            comment</a>
+
+                        <hr>
+        
+                    </div>
+        
+                </div>
+                {% endif %}
+        
             </div>
-            {% else %}
 
-            {% endif %}
+            <div class="col-lg-5 col-md-12 p-0 m-0">
 
-        </div>
-
-
+                <div>
+            
+                {% for comment in comments %}
+                {% if comment %}
+                <div class="card p-4">
+            
+                    <div class="card-header">
+            
+                        {{comment.title}}
+            
+                    </div>
+            
+                    <div class="card-body">
+            
+                        <blockquote class="blockquote mb-0">
+                            <p>{{comment.content}}</p>
+                            <footer class="blockquote-footer"> by {{comment.user_name}} <span
+                                    class="float-right">{{comment.posted_on}}</span></footer>
+                        </blockquote>
+                    </div>
+                </div>
+            
+                {% else %}
+            
+                <p> No comments</p>
+            
+                {% endif %}
+            
+                {% endfor %}
+            
+            </div>
 
     </div>
 

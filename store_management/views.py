@@ -1,5 +1,7 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 
+from django.contrib.auth.models import User
+
 from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required 
@@ -137,17 +139,19 @@ def add_comment(request, product_id):
 
             user_comment.product = product
 
+            user_comment.user = request.user
+
             user_comment.save()
 
-            messages.info(request, 'Comment posted successfully!')
+            messages.info(request, 'Your comment will be posted here shortly,\
+                once it has been approved.')
 
-            return redirect(reverse('products', ))
+            return redirect(reverse('product_detail', args=[product.slug]))
 
         else:
 
             messages.error(request, 'Unable to post comment.\
                             Please check form is valid.')
-
     else:
 
         comment_form = CommentForm()

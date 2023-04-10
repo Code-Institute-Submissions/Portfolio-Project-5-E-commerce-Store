@@ -70,7 +70,7 @@ def product_detail(request, product_slug):
 
     product = get_object_or_404(Product, slug=product_slug)
 
-    comments = Comment.objects.filter(product=product)
+    comments = Comment.objects.filter(product=product, approved=True)
 
     context = {
         'product': product,

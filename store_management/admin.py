@@ -12,6 +12,8 @@ class CommentAdmin(admin.ModelAdmin):
 
     list_filter = ('posted_on', 'approved',)
 
+    actions = ['approve_comments']
+
     def approve_comments(self, request, queryset):
 
         queryset.update(approved=True)
