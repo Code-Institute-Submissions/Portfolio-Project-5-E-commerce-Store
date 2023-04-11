@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'store_management/css/store_management.css' %}">
+
+{% endblock %}
+
+{% block page_header %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mb-auto ">
+
+      <h2>Store Management</h2>
+
+      <hr>
+
+      <h6><u> Aduj Visuals Inbox</u></h6>
+
+        <div class="row">
+
+            <div class="col-12">
+                <fieldset>
+                    <legend class="text-center"><u>Messages</u> </legend>
+
+                    <div id="store-inbox" class="m-auto">
+                        
+                        {% for mail in mails %}
+                            <div class="list-group mb-3" >
+                                <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><strong>Name: </strong> {{mail.name}}</h5>
+                                    <small><strong>Date: </strong> {{mail.sent_on}}</small>
+                                </div>
+                                <p class="mb-1"><strong>Email: </strong>{{mail.email_address}}</p>
+                                <p class="mb-1"> <strong>Message: </strong>{{mail.message}}</p>
+                                </a>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                </fieldset>
+                <br><br>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}

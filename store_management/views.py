@@ -10,7 +10,7 @@ from .forms import ProductForm, CommentForm, NewsletterForm, ContactForm
 
 from products.models import Product, Category
 
-from .models import Comment
+from .models import Comment, Contact
 
 
 @login_required
@@ -165,6 +165,23 @@ def add_comment(request, product_id):
 
 
 @login_required
+def approve_comments(request):
+
+    """ A view to approve comments on store products """
+
+
+    comment_form = CommentForm()
+
+
+    context = {
+        'comment_form': comment_form,
+    }
+
+    return render(request, 'store_management/approve_comments.html', context)
+
+
+
+@login_required
 def newsletter(request):
 
     """ A view that renders a newsletter form """
@@ -235,3 +252,15 @@ def contact_form(request):
     }
 
     return render(request, 'store_management/contact_form.html', context)
+
+
+def store_inbox(request):
+
+    mails = Contact.objects.all()
+
+    context = {
+        'mails': mails,
+    }
+
+    
+    return render(request, 'store_management/store_inbox.html', context)

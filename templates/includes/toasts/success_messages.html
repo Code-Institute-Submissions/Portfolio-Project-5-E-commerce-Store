@@ -18,6 +18,7 @@
 
     </div>
     <hr>
+    {% if order_total and not on_profile_page %}
     {% for item in basket_items %}
 
     <div class="row toast-body">
@@ -69,5 +70,7 @@
       <br><br>
 
     </div>
+
+    {% endif %}
     
   </div>

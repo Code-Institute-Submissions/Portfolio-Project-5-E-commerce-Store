@@ -7,13 +7,12 @@ html {
 /** -------------------------------------Padding, Margins, Text, **/
 body {
     min-height: 100vh;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     font-family: 'Alegreya SC', serif;
-    color:#4C4C4C;
+    color: #4C4C4C;
 }
+
 
 header {
     margin: 0;
@@ -21,7 +20,7 @@ header {
 
 .custom-toggler.navbar-toggler {
 
-    border-color:#C35355
+    border-color: #C35355
 }
 
 h1,
@@ -53,7 +52,7 @@ a:link {
 }
 
 .btn-hover:hover {
-    text-decoration:underline #C35355 !important;
+    text-decoration: underline #C35355 !important;
 
 }
 
@@ -75,7 +74,7 @@ a:link {
 
     margin: 0 3rem 0 3rem;
     font-size: 2rem;
-    color:#B9B6C8 ;
+    color: #B9B6C8;
 }
 
 .social-link:hover {
@@ -86,13 +85,6 @@ a:link {
     color: #C35355 !important;
 }
 
-
-#footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    background: #6cf
-}
 
 
 /* ------------------------------- Toasts section */
@@ -126,7 +118,7 @@ a:link {
 }
 
 .clr-red {
-    color:#C35355;
+    color: #C35355;
 }
 
 .bg-brown {
@@ -134,12 +126,13 @@ a:link {
     background-color: #BAA89B;
 
 }
+
 .bg-black {
     background-color: black;
 }
 
 .bg-logo-red {
-    background-color:#C35355 !important;
+    background-color: #C35355 !important;
 }
 
 .bg-grey {

@@ -10,9 +10,13 @@
 
     <div class="container-fluid mb-auto ">
 
+      <h2>Manage Products</h2>
+
       <br>
 
-      <h6><u> Contact Us </u></h6>
+      <h6><u> Approve Comments</u></h6>
+
+      <hr>
 
       <br>
 
@@ -20,14 +24,19 @@
 
             <div class="col-lg-6 col-md-12 mb-3">
 
-                <form method="POST" action="{% url 'contact_form' %}">
+                <div>
+
+                    {{comment_form}}
+
+                </div>
+
+                <form method="POST" action="" enctype="multipart/form-data">
                     {% csrf_token %}
 
-                    {{ contact_form | crispy }}
 
                     <div class="float-right">
 
-                        <button class="btn bg-logo-red rounded-1" type="submit"> Submit </button>
+                        <button class="btn bg-logo-red rounded-1" type="submit"> Update Product </button>
     
                     </div>
 

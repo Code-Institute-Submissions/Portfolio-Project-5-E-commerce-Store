@@ -4,19 +4,22 @@
 
 {% load mathfilters %}
 
-{% block page_header %}
-
+{% block extra_title %} 
+ Basket
 {% endblock %}
 
 {% block content %}
 
-    <div class="container-fluid  mb-auto">
+    <div class="container-fluid mb-auto">
 
       <div class="row">
 
-        <div class="col-12 p-0 m-0">
+        <div class="col-12 p-0 m-auto">
 
           <h1 class="h5"> Your Basket </h1>
+        </div>
+
+        <div class="col-12">
 
           <hr>
 
@@ -42,12 +45,12 @@
               <tr>
 
                 <td>
-                    
-                    <a href="">
 
-                        <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
+                  <a href="">
 
-                    </a>
+                    <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
+
+                  </a>
 
                 </td>
 
@@ -117,16 +120,20 @@
 
           {% else %}
 
-          <div class="col-12">
+          
+
+
+        </div>
+        <div class="row">
+          <div class="col-12 mb-auto">
 
             <p>Your basket is empty </p>
 
           </div>
 
           {% endif %}
-
-
         </div>
+      </div>
 
       </div>
 

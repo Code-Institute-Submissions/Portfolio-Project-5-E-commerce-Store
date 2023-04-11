@@ -13,9 +13,13 @@ urlpatterns = [
 
     path('<product_id>/add_comment/', views.add_comment, name='add_comment'),
 
+    path('approve_comments/', views.approve_comments, name='approve_comments'),
+
     path('newsletter/', views.newsletter, name='newsletter'),
 
     path('contact_form/', views.contact_form, name='contact_form'),
+
+    path('store_inbox/', views.store_inbox, name='store_inbox'),
 
 
 

@@ -112,7 +112,8 @@ class ContactForm(forms.ModelForm):
 
         model = Contact
 
-        fields = ('name', 'email_address', 'tel_number', 'message',)
+        fields = '__all__'
+        exclude = ('sent_on', 'user',)
 
     def __init__(self, *args, **kwargs):
 
@@ -121,11 +122,8 @@ class ContactForm(forms.ModelForm):
         placeholders = {
 
             'name': 'Name',
-
             'email_address': 'Email',
-
-            'tel_number': 'Phone number',
-
+            'tel_number': 'Tel No.',
             'message': 'Message',
 
         }

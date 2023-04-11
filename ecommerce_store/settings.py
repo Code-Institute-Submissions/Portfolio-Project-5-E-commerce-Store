@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-joha-will-portfolio-proj-8kjesa49oi.us2.codeanyapp.com']
+ALLOWED_HOSTS = ['8000-johawill-portfolioproje-otuim5r4qxn.ws-eu93.gitpod.io', 'localhost']
 
 
 # Application definition
