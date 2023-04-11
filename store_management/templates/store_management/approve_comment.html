@@ -10,11 +10,11 @@
 
     <div class="container-fluid mb-auto ">
 
-      <h2>Manage Products</h2>
+      <h2>Manage Comments</h2>
 
       <br>
 
-      <h6><u> Approve Comments</u></h6>
+      <h6><u> Approve comments </u></h6>
 
       <hr>
 
@@ -24,19 +24,14 @@
 
             <div class="col-lg-6 col-md-12 mb-3">
 
-                <div>
-
-                    {{comment_form}}
-
-                </div>
-
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'approve_comment' comment.id %}" enctype="multipart/form-data">
                     {% csrf_token %}
 
+                    {{form | crispy }}
 
                     <div class="float-right">
 
-                        <button class="btn bg-logo-red rounded-1" type="submit"> Update Product </button>
+                        <button class="btn bg-logo-red rounded-1" type="submit"> Approve comment </button>
     
                     </div>
 

@@ -165,20 +165,51 @@ def add_comment(request, product_id):
 
 
 @login_required
-def approve_comments(request):
+def approve_comment(request, comment_id):
 
     """ A view to approve comments on store products """
 
 
-    comment_form = CommentForm()
+    if not request.user.is_superuser:
 
+        messages.error(request, 'Sorry, only store owners\
+             are allowed on this page!')
+
+        return redirect(reverse('home'))
+
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if request.method == 'POST':
+
+        form = CommentForm(request.POST, instance=comment)
+
+        if form.is_valid():
+
+            form.save()
+
+            messages.info(request, 'Product updated successfully.')
+
+            return redirect(reverse('home'))
+
+        else:
+
+            messages.error(request, 'Unable to approve comment.\
+                            Please check form is valid.')
+
+    else:
+
+        form = CommentForm(instance=comment)
+
+        messages.info(request, f'You are editing this product')
 
     context = {
-        'comment_form': comment_form,
+
+        'form': form,
+
+        'comment': comment,
     }
 
-    return render(request, 'store_management/approve_comments.html', context)
-
+    return render(request, 'store_management/approve_comment.html', context)
 
 
 @login_required
@@ -256,6 +287,8 @@ def contact_form(request):
 
 def store_inbox(request):
 
+    """ A view that renders all the store's messages """
+
     if not request.user.is_superuser:
 
         messages.error(request, 'Sorry, only store owners\
@@ -276,7 +309,7 @@ def store_inbox(request):
 @login_required
 def delete_message(request, message_id):
 
-    """ Delete product's from the store """
+    """ Delete messages from the store's inbox """
 
     if not request.user.is_superuser:
 
