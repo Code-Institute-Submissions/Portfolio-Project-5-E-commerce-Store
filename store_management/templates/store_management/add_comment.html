@@ -10,42 +10,42 @@
 
     <div class="container-fluid mb-auto ">
 
-      <h2>Manage Products</h2>
+        <h2>Manage Products</h2>
 
-      <hr>
+        <hr>
 
-      <br>
+        <br>
 
-      <h6><u> Add a product </u></h6>
+        <h6><u> Add a comment </u></h6>
 
-      <br>
+        <br>
 
         <div class="row">
 
             <div class="col-lg-6 col-md-12 mb-3">
 
-                <form method="POST" action="">
-                    {% csrf_token %}
+                    <form method="POST" action="">
+                        {% csrf_token %}
 
-                    {{comment_form | crispy }}
+                        {{comment_form | crispy }}
 
-                    <div class="float-right">
+                        <div class="float-right">
 
-                        <button class="btn bg-logo-red rounded-1" type="submit"> Add Comment </button>
-    
-                    </div>
+                            <button class="btn bg-dark text-white rounded-1" type="submit"> Add Comment </button>
 
-                </form>
-                
+                        </div>
+
+                    </form>
+
 
             </div>
 
 
         </div>
 
-        
 
-        
+
+
 
     </div>
 

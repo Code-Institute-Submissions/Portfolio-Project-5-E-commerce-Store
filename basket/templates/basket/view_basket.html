@@ -4,140 +4,173 @@
 
 {% load mathfilters %}
 
+{% block extra_css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'basket/css/basket.css' %}">
+
+{% endblock %}
+
 {% block extra_title %} 
  Basket
 {% endblock %}
 
 {% block content %}
 
-    <div class="container-fluid mb-auto">
+<div class="container-fluid">
 
-      <div class="row">
+  <div class="row m-auto">
 
-        <div class="col-12 p-0 m-auto">
-
-          <h1 class="h5"> Your Basket </h1>
-        </div>
-
-        <div class="col-12">
-
-          <hr>
-
-          <br>
-
-          <table class="table table-borderless">
-
-            {% if basket_items %}
-
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
-                <th scope="col">Qty</th>
-                <th scope="col">Total</th>
-
-              </tr>
-            </thead>
-
-            <tbody>
-              {% for item in basket_items %}
-              <tr>
-
-                <td>
-
-                  <a href="">
-
-                    <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
-
-                  </a>
-
-                </td>
-
-                <td>
-
-                  <a href="{{ item.product.get_absolute_url }}">
-
-                    <h6>{{ item.product.name }}</h6>
-
-                  </a>
-
-                </td>
-
-                <td>
-
-                  <p> £ {{ item.product.price }}</p>
-
-                </td>
-
-                <td class="py-3 w-25">
-                  <form class="form update-form" method="POST" action="{% url 'update_basket' item.product_id %}">
-
-                    <label>Qty:</label>
-
-                    {% csrf_token %}
-
-                    <select id="selected_{{product.id}}" name="quantity">
-
-
-                      <option selected> {{item.quantity}}</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-
-                    </select>
-
-                  </form>
-
-                  <a class="update-button text-info"><small>Update</small></a>
-
-                  <a href="{% url 'remove_product' item.product_id %}" class="remove-button text-danger float-right"
-                    data-id="{{ item.product_id }}"><small>Remove</small></a>
-
-                </td>
-                <td>
-
-                  <p> £ {{ item.product.price | mul:item.quantity }}</p>
-
-                </td>
-
-              </tr>
-              {% endfor %}
-
-            </tbody>
-
-          </table>
-
-          <div class="col-12 mt-2 text-right">
-            <a href="{% url 'checkout' %}" class="p-2 btn bg-dark text-white border-dark rounded-0 ml-100">Proceed to
-              check out &nbsp; <i class="fa-solid fa-arrow-right"></i> </a>
-
-          </div>
-
-
-
-          {% else %}
-
-          
-
-
-        </div>
-        <div class="row">
-          <div class="col-12 mb-auto">
-
-            <p>Your basket is empty </p>
-
-          </div>
-
-          {% endif %}
-        </div>
-      </div>
-
-      </div>
+    <div class="col-12">
+      <h1 class="h5"> Your Basket </h1>
 
     </div>
+
+
+
+    <hr>
+
+    <br>
+
+    <div class="col-12 p-0 m-auto">
+
+      <table class="table table-borderless">
+
+        {% if basket_items %}
+
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Total</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for item in basket_items %}
+          <tr>
+
+            <td>
+
+              <a href="">
+
+                <img src="{{ item.product.image.url}}" width="100px" class="img-fluid" alt="{{ product.name }}">
+
+              </a>
+
+            </td>
+
+            <td>
+
+              <a href="{{ item.product.get_absolute_url }}">
+
+                <h6>{{ item.product.name }}</h6>
+
+              </a>
+
+            </td>
+
+            <td>
+
+              <p> £ {{ item.product.price }}</p>
+
+            </td>
+
+            <td class="py-3 w-25">
+              <form class="form update-form" method="POST" action="{% url 'update_basket' item.product_id %}">
+
+                <label>Qty:</label>
+
+                {% csrf_token %}
+
+                <select id="selected_{{product.id}}" name="quantity">
+
+
+                  <option selected> {{item.quantity}}</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+
+                </select>
+
+              </form>
+
+              <a class="update-button text-info"><small>Update</small></a>
+
+              <a href="{% url 'remove_product' item.product_id %}" class="remove-button text-danger float-right"
+                data-id="{{ item.product_id }}" data-toggle="modal"
+                data-target="#staticBackdrop"><small>Remove</small></a>
+
+            </td>
+            <td>
+
+              <p> £ {{ item.product.price | mul:item.quantity }}</p>
+
+            </td>
+
+          </tr>
+          {% endfor %}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <div class="col-12 mt-2 mb-auto text-right">
+      <a href="{% url 'checkout' %}" class="p-2 btn bg-dark text-white border-dark rounded-0 ml-100">Proceed to
+        check out &nbsp; <i class="fa-solid fa-arrow-right"></i> </a>
+
+    </div>
+
+
+
+    {% else %}
+
+
+
+
+  </div>
+  <div class="row">
+    <div class="col-12 ">
+
+      <p>Your basket is empty </p>
+
+
+
+    </div>
+
+    {% endif %}
+    <!-- Modal -->
+    <div class="modal fade mb-auto" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
 
 {% endblock %}
 

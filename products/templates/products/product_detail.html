@@ -32,17 +32,17 @@
             
                         <div class="row p-3">
             
-                            <div class="col-6"> Price </div>
+                            <div class="col-6"> <strong>Price:</strong>  ${{product.price}} </div>
             
-                            <div class="col-6 "><span>$ {{product.price}} </span></div>
+                           
             
                         </div>
             
                         <div class="row p-3">
             
-                            <div class="col-6"> Size</div>
+                            <div class="col-6"><strong>Size:</strong> {{product.size}}</div>
             
-                            <div class="col-6 "><span>$ {{product.size}} </span></div>
+                            
             
                         </div>
             
@@ -99,10 +99,19 @@
                 <div class="row">
         
                     <div class="col-12 mb-2 p-1">
+
                         <br>
+
+                        <fieldset>
+
+                            <legend> <u>Comments</u></legend>
+
+                            <br>
         
                         <a href="{% url 'add_comment' product.id %}" class="btn bg-logo-red rounded-1"> Add
                             comment</a>
+
+                        </fieldset>
                     </div>
         
                 </div>

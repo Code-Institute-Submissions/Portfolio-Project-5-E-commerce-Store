@@ -53,19 +53,21 @@
                         {% endif %}
                         <li class="list-group-item p-2"><strong>Size: </strong>{{ product.size  }}</li>
                         <li class="list-group-item p-2"><strong>Price: </strong>£{{ product.price }}</li>
+                        <li class="list-group-item p-0">
+
+                            {% if request.user.is_superuser %}
+                                <div class="inline-flex">
+                                    <a href="{% url 'edit_product' product.id %}" class="btn bg-dark text-white rounded-1 w-100 mt-1"> Edit Product </a>
+                
+                                    <a href="{% url 'delete_product' product.slug %}" class=" btn bg-logo-red rounded-1 w-100 mt-1"> Delete Product </a>
+                                </div>
+                            {% endif %}
+
+                            
+                        </li>
                     </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
     
-                    {% if request.user.is_superuser %}
-                    <div>
-                        <a href="{% url 'edit_product' product.id %}"> Edit Product </a>
-    
-                        <a href="{% url 'delete_product' product.slug %}"> Delete Product </a>
-                    </div>
-                    {% endif %}
+                    
                 </div>
     
             </div>

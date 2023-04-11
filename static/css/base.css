@@ -70,6 +70,13 @@ a:link {
 
 /** -------------------------------------Footer Section **/
 
+#footer {
+    bottom: 0;
+    position: relative;
+    margin-top: auto;
+    
+}
+
 .social-link {
 
     margin: 0 3rem 0 3rem;
