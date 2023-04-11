@@ -2,27 +2,27 @@
 
 {% load static %}
 
-{% block page_header %}
+{% block extra_css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'store_management/css/store_management.css' %}">
 
 {% endblock %}
 
 {% block content %}
 
-    <div class="container-fluid mb-auto ">
+    <div class="container-fluid">
 
       <h2>Manage Products</h2>
 
       <hr>
 
-      <br>
-
       <h6><u> Add a product </u></h6>
-
-      <br>
 
         <div class="row">
 
-            <div class="col-lg-6 col-md-12 mb-3">
+            <div class="col-lg-6 col-md-12">
+
+                <div class="m-auto" id="store-inbox">
 
                 <form method="POST" action="{% url 'add_product' %}" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -31,21 +31,19 @@
 
                     <div class="float-right">
 
-                        <button class="btn bg-logo-red rounded-1" type="submit"> Add Product </button>
+                        <button class="btn bg-dark rounded-1 text-white" type="submit"> Add Product </button>
     
                     </div>
 
                 </form>
+
+                </div>
                 
 
             </div>
 
 
         </div>
-
-        
-
-        
 
     </div>
 

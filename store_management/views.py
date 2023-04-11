@@ -256,6 +256,13 @@ def contact_form(request):
 
 def store_inbox(request):
 
+    if not request.user.is_superuser:
+
+        messages.error(request, 'Sorry, only store owners\
+             are allowed on this page!')
+
+        return redirect(reverse('home'))
+
     mails = Contact.objects.all()
 
     context = {
@@ -264,3 +271,23 @@ def store_inbox(request):
 
     
     return render(request, 'store_management/store_inbox.html', context)
+
+
+@login_required
+def delete_message(request, message_id):
+
+    """ Delete product's from the store """
+
+    if not request.user.is_superuser:
+
+        messages.error(request, 'Sorry, only store owners are allowed on this page!')
+
+        return redirect(reverse('home'))
+
+    mail = get_object_or_404(Contact, id=message_id)
+
+    mail.delete()
+
+    messages.info(request, 'Message deleted successfully.')
+
+    return redirect(reverse('store_inbox'))

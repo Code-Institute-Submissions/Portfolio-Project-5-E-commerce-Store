@@ -38,8 +38,12 @@
                                     <small><strong>Date: </strong> {{mail.sent_on}}</small>
                                 </div>
                                 <p class="mb-1"><strong>Email: </strong>{{mail.email_address}}</p>
+
                                 <p class="mb-1"> <strong>Message: </strong>{{mail.message}}</p>
                                 </a>
+                                <div class="col">
+                                <a href="{% url 'delete_message' mail.id %}" class=" btn bg-logo-red rounded-1 float-right"> Delete message </a>
+                                </div>
                             </div>
                         {% endfor %}
 
