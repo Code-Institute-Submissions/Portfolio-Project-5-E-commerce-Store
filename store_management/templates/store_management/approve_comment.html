@@ -27,11 +27,11 @@ Approve comment
                 <form method="POST" action="{% url 'approve_comment' comment.id%}" enctype="multipart/form-data">
                     {% csrf_token %}
 
-                    {{form | crispy }}
+                    {{form|crispy}}
 
                     <div class="float-right">
 
-                        <button class="btn bg-logo-red rounded-1" type="submit"> Approve comment </button>
+                        <button class="btn bg-dark text-white rounded-1" type="submit"> Approve comment </button>
     
                     </div>
 

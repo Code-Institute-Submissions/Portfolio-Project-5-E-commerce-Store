@@ -25,7 +25,7 @@ class Comment(models.Model):
 
     class Meta:
 
-        ordering = ['posted_on']
+        ordering = ['-posted_on']
 
     def __str__(self):
 
@@ -56,6 +56,10 @@ class Contact(models.Model):
     message = models.TextField(null=True)
 
     sent_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+
+        ordering = ['-sent_on']
 
     def __str__(self):
 

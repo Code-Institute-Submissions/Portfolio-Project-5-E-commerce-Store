@@ -48,7 +48,7 @@
     {% block extra_js %}
     {% endblock %}
 
-    <title>Aduj Visuals | {% block extra_title %} {% endblock %} </title>
+    <title>Aduj Visuals | {% block extra_title %}Home {% endblock %} </title>
   </head>
   <body>
     
@@ -101,6 +101,7 @@
 
                     <a class="dropdown-item clr-grey" href="{% url 'add_product' %}">Store Management</a>
                     <a class="dropdown-item clr-grey" href="{% url 'store_inbox' %}">Store Inbox</a>
+                    <a class="dropdown-item clr-grey" href="{% url 'view_comments' %}">Approve comments</a>
 
                     {% endif %}
 
@@ -190,6 +191,8 @@
     {% block page_header %}
     {% endblock %}
 
+    {% load crispy_forms_tags %}
+
     {% block content %}
 
     {% endblock %}
@@ -199,9 +202,9 @@
 
       <div class="row bg-light">
 
-        <div class="col-12 text-center">
+        <div class="col-12">
 
-          <div class="col">
+          <div class="text-center d-flex">
 
           <a href="https://www.instagram.com/" target="_blank" class="social-link" rel="noopener noreferrer"><i
               class="fa-brands fa-instagram"></i></a>
@@ -237,7 +240,7 @@
           <form method="POST" action="{% url 'newsletter' %}">
             {% csrf_token %}
 
-            {{subscribe_form|crispy }}
+            {{ subscribe_form }}
 
             <div>
 

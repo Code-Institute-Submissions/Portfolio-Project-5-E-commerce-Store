@@ -54,7 +54,7 @@ class CommentForm(forms.ModelForm):
 
         model = Comment
 
-        fields = ('title', 'user_name', 'content',)
+        fields = ('title', 'user_name', 'content', )
 
     def __init__(self, *args, **kwargs):
 
@@ -79,6 +79,43 @@ class CommentForm(forms.ModelForm):
             self.fields[field].label = False
 
 
+class ApproveCommentForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Comment
+
+        fields = ('title', 'user_name', 'content', 'approved',)
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        placeholders = {
+
+            'title': 'title',
+
+            'user_name': 'Username',
+
+            'content': 'Comment',
+
+            'approved': 'Approved'
+
+        }
+
+        for field in self.fields:
+
+            self.fields[field].widget.attrs = {'readonly':'readonly'}
+
+            placeholder = placeholders[field]
+
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+
+            self.fields[field].label = False
+            
+            self.fields['approved'].label = 'Approve comment'
+
+
 class NewsletterForm(forms.ModelForm):
 
     class Meta:
@@ -86,6 +123,8 @@ class NewsletterForm(forms.ModelForm):
         model = Newsletter
 
         fields = ('email_address',)
+
+        exclude = ('date',)
 
     def __init__(self, *args, **kwargs):
 

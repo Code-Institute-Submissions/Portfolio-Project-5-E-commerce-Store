@@ -14,6 +14,8 @@ class CommentAdmin(admin.ModelAdmin):
 
     actions = ['approve_comments']
 
+    ordering = ('-posted_on',)
+
     def approve_comments(self, request, queryset):
 
         queryset.update(approved=True)

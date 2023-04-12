@@ -6,7 +6,7 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 
-from .forms import ProductForm, CommentForm, NewsletterForm, ContactForm
+from .forms import ProductForm, CommentForm, NewsletterForm, ContactForm, ApproveCommentForm
 
 from products.models import Product, Category
 
@@ -201,15 +201,15 @@ def approve_comment(request, comment_id):
 
     if request.method == 'POST':
 
-        form = CommentForm(request.POST, instance=comment)
+        form = ApproveCommentForm(request.POST, instance=comment)
 
         if form.is_valid():
 
             form.save()
 
-            messages.info(request, 'Product updated successfully.')
+            messages.info(request, 'Comment has been approved.')
 
-            return redirect(reverse('home'))
+            return redirect(reverse('view_comments'))
 
         else:
 
@@ -218,9 +218,7 @@ def approve_comment(request, comment_id):
 
     else:
 
-        form = CommentForm(instance=comment)
-
-        messages.info(request, f'You are editing this product')
+        form = ApproveCommentForm(instance=comment)
 
     context = {
 
