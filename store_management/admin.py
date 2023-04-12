@@ -24,7 +24,7 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):
 
-    list_display = ('email_address', 'date',)
+    list_display = ('email', 'date',)
 
 
 @admin.register(Contact)

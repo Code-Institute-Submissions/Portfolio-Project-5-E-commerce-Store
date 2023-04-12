@@ -122,7 +122,7 @@ class NewsletterForm(forms.ModelForm):
 
         model = Newsletter
 
-        fields = ('email_address',)
+        fields = '__all__'
 
         exclude = ('date',)
 
@@ -132,7 +132,7 @@ class NewsletterForm(forms.ModelForm):
 
         placeholders = {
 
-            'email_address': 'Email',
+            'email': 'Email',
 
         }
 
@@ -143,6 +143,8 @@ class NewsletterForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
 
             self.fields[field].label = False
+
+
 
 
 class ContactForm(forms.ModelForm):

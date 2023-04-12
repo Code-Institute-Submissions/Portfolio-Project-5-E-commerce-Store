@@ -107,6 +107,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'products.views.all_categories',
                 'basket.contexts.basket_contents',
+                'store_management.views.newsletter',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',

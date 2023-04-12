@@ -34,13 +34,17 @@ class Comment(models.Model):
 
 class Newsletter(models.Model):
 
-    email_address = models.EmailField(null=True)
+    email = models.EmailField(null=True)
 
     date = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+
+        ordering = ['-date']
+
     def __str__(self):
 
-        return self.email_address
+        return self.email
 
 
 class Contact(models.Model):

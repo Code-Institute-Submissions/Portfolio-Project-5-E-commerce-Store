@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'store_management/css/store_management.css' %}">
+
+{% endblock %}
+
+{% block extra_title %} 
+Newsletter
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid mb-auto ">
+
+      <h2>Store Newsletter</h2>
+
+      <hr>
+
+      <h6><u> View subscribers</u></h6>
+
+        <div class="row">
+
+            <div class="col-12">
+                <fieldset>
+                    <legend class="text-center"><u>Subscribers</u></legend>
+
+                    {% if subscribers %}
+
+                    <div id="store-inbox" class="m-auto">
+                        
+                        {% for subscriber in subscribers %}
+
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              {{subscriber.email}}
+                              <span class="badge badge-primary badge-pill">{{subscriber.date}}</span>
+                            </li>
+                          </ul>
+                           
+                        {% endfor %}
+
+                        {% else %}
+                        <div class="text-center">
+                            <h6>There are no Subscribers.</h6>
+                        </div>
+                        {% endif  %}
+
+                    </div>
+
+                </fieldset>
+                <br><br>
+
+            </div>
+
+            
+        </div>
+
+    </div>
+
+{% endblock %}

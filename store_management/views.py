@@ -10,7 +10,7 @@ from .forms import ProductForm, CommentForm, NewsletterForm, ContactForm, Approv
 
 from products.models import Product, Category
 
-from .models import Comment, Contact
+from .models import Comment, Contact, Newsletter
 
 
 @login_required
@@ -252,38 +252,57 @@ def delete_comment(request, comment_id):
     return redirect(reverse('view_comments'))
 
 
-@login_required
+
 def newsletter(request):
-
     """ A view that renders a newsletter form """
+    form = NewsletterForm()
 
-    if request.method == 'POST':
+    if request.method == "POST":
 
-        subscribe_form = NewsletterForm(request.POST)
+        form = NewsletterForm(request.POST)
 
-        if subscribe_form.is_valid():
+        if form.is_valid():
 
-            subscribe_form.save()
+            form.save()
 
-            messages.info(request, 'Successfully subscribe to our newsletter.')
+            messages.info(request, 'Subscribed successfully')
 
             return redirect(reverse('home'))
-
         else:
-
-            messages.error(request, 'Unable to subcribe\
+            messages.error(request, 'Unable to send message.\
                             Please check form is valid.')
-
     else:
-
-        subscribe_form = NewsletterForm()
+        form = NewsletterForm()
 
     context = {
 
-        'subscribe_form': subscribe_form,
+        'form': form,
     }
 
-    return render(request, 'base.html', context)
+    return context
+
+
+@login_required
+def view_newsletter(request):
+    """ A view that renders users comments"""
+
+    if not request.user.is_superuser:
+
+        messages.error(request, 'Sorry, only store owners\
+             are allowed on this page!')
+
+        return redirect(reverse('home'))
+
+    subscribers = Newsletter.objects.all()
+
+
+    context = {
+
+        'subscribers': subscribers,
+
+    }
+
+    return render(request, 'store_management/view_newsletter.html', context)
 
 
 @login_required

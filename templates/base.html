@@ -101,7 +101,8 @@
 
                     <a class="dropdown-item clr-grey" href="{% url 'add_product' %}">Store Management</a>
                     <a class="dropdown-item clr-grey" href="{% url 'store_inbox' %}">Store Inbox</a>
-                    <a class="dropdown-item clr-grey" href="{% url 'view_comments' %}">Approve comments</a>
+                    <a class="dropdown-item clr-grey" href="{% url 'view_comments' %}">Approve Comments</a>
+                    <a class="dropdown-item clr-grey" href="{% url 'view_newsletter' %}">View Newsletter</a>
 
                     {% endif %}
 
@@ -125,7 +126,7 @@
               </li>
               <li class="nav-item active">
 
-                <a href="{% url 'view_basket' %}" class="nav-link clr-grey btn btn-outline-secondary">
+                <a href="{% url 'view_basket' %}" class="nav-link clr-grey btn btn-outline-secondary float-left">
 
                   <i class="fa-solid fa-basket-shopping"></i>
 
@@ -198,28 +199,28 @@
     {% endblock %}
 
     <!-- Footer -->
-    <footer class="container-fluid" id="footer">
+    <footer class="container-fluid text-white" id="footer">
 
       <div class="row bg-light">
 
         <div class="col-12">
 
-          <div class="text-center d-flex">
+          <div class="d-flex justify-content-center">
 
-          <a href="https://www.instagram.com/" target="_blank" class="social-link" rel="noopener noreferrer"><i
-              class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-link" rel="noopener noreferrer"><i
+                class="fa-brands fa-instagram"></i></a>
 
-          <a href="https://en-gb.facebook.com/" target="_blank" class="social-link" rel="noopener noreferrer"><i
-              class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://en-gb.facebook.com/" target="_blank" class="social-link" rel="noopener noreferrer"><i
+                class="fa-brands fa-facebook-f"></i></a>
 
-          <a href="https://www.linkedin.com/in/joha-wilson-5075a8249/s" target="_blank" class="social-link"
-            rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.linkedin.com/in/joha-wilson-5075a8249/s" target="_blank" class="social-link"
+              rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
 
-          <a href="https://twitter.com/?lang=en" target="_blank" class="social-link" rel="noopener noreferrer"><i
-              class="fa-brands fa-twitter"></i></a>
+            <a href="https://twitter.com/?lang=en" target="_blank" class="social-link" rel="noopener noreferrer"><i
+                class="fa-brands fa-twitter"></i></a>
 
-          <a href="https://github.com/Joha-will?tab=repositories" target="_blank" class="social-link"
-            rel="noopener noreferrer"><i class="fa-brands fa-github-alt"></i></a>
+            <a href="https://github.com/Joha-will?tab=repositories" target="_blank" class="social-link"
+              rel="noopener noreferrer"><i class="fa-brands fa-github-alt"></i></a>
 
           </div>
 
@@ -231,22 +232,16 @@
 
         <div class="col-8 p-2 mt-auto ">
 
-          <div></div>
-
-          <h4 class="mr-auto">Subscribe to our letter!</h4>
+          <h4>Subscribe to our letter!</h4>
 
           <small>Stay updated with our lastest deals and offers.</small>
 
-          <form method="POST" action="{% url 'newsletter' %}">
+          <form method="POST" action="{% url 'newsletter' %}" class="w-25" style="min-width: 20rem;">
             {% csrf_token %}
 
-            {{ subscribe_form }}
+              {{ form|crispy}}
 
-            <div>
-
-              <button class="btn bg-logo-red rounded-1" type="submit"> Subscribe </button>
-
-            </div>
+              <button type="submit" class="btn bg-logo-red rounded-1 text-white"> Subscribe</button>
 
           </form>
 
@@ -257,10 +252,9 @@
             <small>&copy; Copyright 2023. Joha Wilson. This project is made for educational purposes only. No
               commercial revenue is generated from the project.</small>
           </div>
-          
+
         </div>
       </div>
-      <div class="push-down"></div>
       </div>
 
 
