@@ -8,8 +8,8 @@
 
 {% endblock %}
 
-{% block page_header %}
-
+{% block extra_title %} 
+Products
 {% endblock %}
 
 {% block content %}
@@ -50,7 +50,7 @@
                         </li>
                         {% endif %}
                         {% if product.model_name %}
-                        <li class="list-group-item p-2"><strong>Model Name:
+                        <li class="list-group-item p-2"><strong>Model:
                             </strong>{{ product.model_name|capfirst }}</li>
                         {% endif %}
                         <li class="list-group-item p-2"><strong>Size: </strong>{{ product.size  }}</li>

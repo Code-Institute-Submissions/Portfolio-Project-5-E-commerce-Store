@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /store_management/
+
+Disallow: /profile_management/
+
+Sitemap: 
