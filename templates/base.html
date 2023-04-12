@@ -68,7 +68,7 @@
           <form method="GET" action="{% url 'products' %}">
             <div class="input-group w-100">
               <input class="form-control border border-black rounded-0" type="text" name="q"
-                placeholder="Search our site">
+                placeholder="Search">
               <div class="input-group-append">
                 <button class="form-control btn btn-black border border-black rounded-0" type="submit">
                   <span class="icon">
@@ -239,7 +239,7 @@
           <form method="POST" action="{% url 'newsletter' %}" class="w-25" style="min-width: 20rem;">
             {% csrf_token %}
 
-              {{ form|crispy}}
+              {{ form.email}}
 
               <button type="submit" class="btn bg-logo-red rounded-1 text-white"> Subscribe</button>
 

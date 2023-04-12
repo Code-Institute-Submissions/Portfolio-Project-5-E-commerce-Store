@@ -16,11 +16,11 @@
 
     <div class="container-fluid mb-auto ">
 
-      <h2>Store Management</h2>
+        <h2>Store Management</h2>
 
-      <hr>
+        <hr>
 
-      <h6><u> Aduj Visuals Inbox</u></h6>
+        <h6><u> Aduj Visuals Inbox</u></h6>
 
         <div class="row">
 
@@ -29,10 +29,10 @@
                     <legend class="text-center"><u>Messages</u> </legend>
 
                     <div id="store-inbox" class="m-auto">
-                        
+
                         {% for mail in mails %}
-                            <div class="list-group mb-3" >
-                                <a href="#" class="list-group-item list-group-item-action">
+                        <div class="list-group mb-3">
+                            <a href="#" class="list-group-item list-group-item-action">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1"><strong>Name: </strong> {{mail.name}}</h5>
                                     <small><strong>Date: </strong> {{mail.sent_on}}</small>
@@ -40,37 +40,39 @@
                                 <p class="mb-1"><strong>Email: </strong>{{mail.email_address}}</p>
 
                                 <p class="mb-1"> <strong>Message: </strong>{{mail.message}}</p>
-                                </a>
-                                <div class="ml-auto">
-                                <a href="" data-toggle="modal" data-target="#staticBackdrop" class=" btn bg-logo-red rounded-1"> Delete message </a>
-                                </div>
+                            </a>
+                            <div class="ml-auto">
+                                <a href="" data-toggle="modal" data-target="#staticBackdrop"
+                                    class=" btn bg-logo-red rounded-1"> Delete message </a>
                             </div>
+                        </div>
 
-                            <!-- Modal -->
-                            <div class="modal fade mb-auto" id="staticBackdrop" data-backdrop="static"
-                                data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel"><strong>Are you sure you
-                                                    want to delete this message?</strong></h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <small>Warning! You can't undo this action.</small>
-                                        </div>
-                                        <div class="modal-footer">
+                        <!-- Modal -->
+                        <div class="modal fade mb-auto" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel"><strong>Are you sure you
+                                                want to delete this message?</strong></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <small>Warning! You can't undo this action.</small>
+                                    </div>
+                                    <div class="modal-footer">
 
-                                            <a href="{% url 'delete_message' mail.id %}" class=" btn bg-logo-red rounded-1 text-white">
-                                                Yes</a>
-                                            <a href="{% url 'store_inbox'%}" class=" btn bg-dark text-white rounded-1"> No </a>
-                                        </div>
+                                        <a href="{% url 'delete_message' mail.id %}"
+                                            class=" btn bg-logo-red rounded-1 text-white">
+                                            Yes</a>
+                                        <a href="{% url 'store_inbox'%}" class=" btn bg-dark text-white rounded-1"> No
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         {% endfor %}
 
                     </div>

@@ -23,6 +23,8 @@ urlpatterns = [
 
     path('view_newsletter/', views.view_newsletter, name='view_newsletter'),
 
+    path('delete_subscriber/<email_id>/', views.delete_subscriber, name='delete_subscriber'),
+
     path('contact_form/', views.contact_form, name='contact_form'),
 
     path('store_inbox/', views.store_inbox, name='store_inbox'),

@@ -306,6 +306,26 @@ def view_newsletter(request):
 
 
 @login_required
+def delete_subscriber(request, email_id):
+
+    """ Delete messages from the store's inbox """
+
+    if not request.user.is_superuser:
+
+        messages.error(request, 'Sorry, only store owners are allowed on this page!')
+
+        return redirect(reverse('home'))
+
+    email = get_object_or_404(Newsletter, id=email_id)
+
+    email.delete()
+
+    messages.info(request, 'Unsubscribe successfully.')
+
+    return redirect(reverse('view_newsletter'))
+
+
+@login_required
 def contact_form(request):
 
     """ Contact form view """
