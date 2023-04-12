@@ -163,12 +163,8 @@ def add_comment(request, product_id):
 
     return render(request, 'store_management/add_comment.html', context)
 
-
-@login_required
-def approve_comment(request, comment_id):
-
-    """ A view to approve comments on store products """
-
+def view_comments(request):
+    """ A view that renders users comments"""
 
     if not request.user.is_superuser:
 
@@ -177,7 +173,31 @@ def approve_comment(request, comment_id):
 
         return redirect(reverse('home'))
 
-    comment = get_object_or_404(Comment, pk=comment_id)
+    comments = Comment.objects.all()
+
+
+    context = {
+
+        'comments': comments,
+
+    }
+
+    return render(request, 'store_management/view_comments.html', context)
+
+
+@login_required
+def approve_comment(request, comment_id):
+
+    """ A view to approve comments on store products """
+
+    if not request.user.is_superuser:
+
+        messages.error(request, 'Sorry, only store owners\
+             are allowed on this page!')
+
+        return redirect(reverse('home'))
+
+    comment = get_object_or_404(Comment, id=comment_id)
 
     if request.method == 'POST':
 

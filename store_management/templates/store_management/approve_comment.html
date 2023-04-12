@@ -2,8 +2,8 @@
 
 {% load static %}
 
-{% block page_header %}
-
+{% block extra_title %} 
+Approve comment
 {% endblock %}
 
 {% block content %}
@@ -24,7 +24,7 @@
 
             <div class="col-lg-6 col-md-12 mb-3">
 
-                <form method="POST" action="{% url 'approve_comment' comment.id %}" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'approve_comment' comment.id%}" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     {{form | crispy }}

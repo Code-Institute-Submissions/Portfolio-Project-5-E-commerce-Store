@@ -9,13 +9,13 @@ urlpatterns = [
 
     path('edit_product/<int:product_id>/', views.edit_product, name='edit_product'),
 
-    path('approve_comment/<int:comment_id>/', views.approve_comment, name='approve_commment'),
+    path('view_comments/', views.view_comments, name='view_comments'),
+
+    path('approve_comment/<int:comment_id>', views.approve_comment, name='approve_comment'),
 
     path('delete_product/<product_slug>/', views.delete_product, name='delete_product'),
 
     path('<product_id>/add_comment/', views.add_comment, name='add_comment'),
-
-    path('approve_comments/', views.approve_comments, name='approve_comments'),
 
     path('newsletter/', views.newsletter, name='newsletter'),
 
@@ -24,7 +24,5 @@ urlpatterns = [
     path('store_inbox/', views.store_inbox, name='store_inbox'),
 
     path('delete_message/<int:message_id>/', views.delete_message, name='delete_message'),
-
-
 
 ]
