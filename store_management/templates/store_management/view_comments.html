@@ -52,9 +52,11 @@ View comments
                                 {% endif %}
 
                                 </a>
-                                <div class="col">
-                                <a href="{% url 'approve_comment' comment.id %}" class=" btn bg-logo-red rounded-1 float-right"> Approve comment </a>
+                                <div class="ml-auto">
+                                    <a href="{% url 'approve_comment' comment.id %}" class=" btn bg-dark text-white rounded-1"> Approve comment </a>
+                                    <a href="{% url 'delete_comment' comment.id %}" class=" btn bg-logo-red rounded-1"> Delete Comment </a>
                                 </div>
+                                
                             </div>
                         {% endfor %}
 

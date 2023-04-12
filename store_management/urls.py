@@ -13,6 +13,8 @@ urlpatterns = [
 
     path('approve_comment/<int:comment_id>', views.approve_comment, name='approve_comment'),
 
+    path('delete_comment/<comment_id>/', views.delete_comment, name='delete_comment'),
+
     path('delete_product/<product_slug>/', views.delete_product, name='delete_product'),
 
     path('<product_id>/add_comment/', views.add_comment, name='add_comment'),
