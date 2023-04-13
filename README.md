@@ -1,4 +1,7 @@
 
+
+---
+
 ## **Introduction**
 Welcome to my final project, ecommerce applications. This project was inspired by my eldest brothers passion for photography. Which gave me the inspiration to create a website for his photographs so that they can be accessed by different users. This will then enable my brothers photographs to reach a wider audience and enable users to purchase copies of his photography.
 
@@ -10,7 +13,140 @@ Thank you for viewing my project.
 
 I hope you find the application useful!
 
+[Live Site](https://aduj-visuals.herokuapp.com/)
+
 ---
+
+# UXD - User Experience Design
+
+##  **Strategy**
+
+My plan of action was to build and produce a website that would be the most useful and beneficial to my targeted audience, employing the UX principles strategy.
+
+### **Target Audience**
+- People age 16 or older. 
+
+- This website is not gender specific. 
+
+- People who has a passion for photograpy.
+
+- People who are into nature and outdoors.
+
+- People from all around the world. 
+
+---
+
+##  **Marketing**
+
+**Plan**
+
+Aduj Visuals website is a business to customer e-commerce platform, created with the aim for users to be able to purchase products as well as enable users to gain access to the portfolio. 
+
+To increase sales I implemented a marketing plan to ensure the website and photographs reaches a wider audience. I created a Facebook page as a marketing technique which will exhibit new photographs, information and news that is relevant to the website. 
+
+Users are also able to sign up to the websites newsletter created using a custom model. This newsletter form is found in the footer of the website.
+
+**FaceBook Page**
+
+
+
+
+
+#### **Database**
+
+The website uses Heroku and ElephantSQL Postgres relation database to store data. The project is consist of 8 models in total. The models are, Contact model, Newsletter model, Comment model, UserProfile model, Product model, Category model, OrderItem model and the Order model. These models are the key components of the website business goals and they also play a big role in improving the user experience. 
+
+
+
+#### **Fonts**
+
+Google Fonts - Russo One
+- This font was chosen because I think it goes well with the theme I was trying to create for the website. I think this font is also simple and legiable. This font was used throughout the entire website which changes in size and weight when utilized with different elements, such as a h1 tag or a p tag.
+
+#### **Images**
+The images used throughout this project came from my research online and as well as a few of my own. These images were picked to complement the website's information, and I thought they went well with the website's looks.
+
+
+
+##  **Skeleton**
+These wireframes were made during the planning stage to help me with the layout and design of specific page elements and content. They also assisted me in choosing how to implement particular functionalities. A few changes were made to the website during the development stages. A few things that changed were:
+
+- During development, a home button was added to the navigation bar because I believed it would improve user experience if visitors could return to the home page from any page, if necessary.
+- Pagination was added later during the development of the website, and it included buttons for consumers to utilise to navigate while viewing their bookings.
+
+Use the link below to view the website's wireframes.
+
+[Link to website's Wireframes](https://github.com/Joha-will/Active-Spring-Portfolio-Project-4-Full-Stack-Toolkit-/blob/main/static/assests/wireframes.md)
+
+
+## **Surface**
+
+### **Features**
+
+#### **Home page**
+
+
+**Navbar**
+
+I have included a fixed navbar positioned at the top of the screen at all times. This enables the user to navigate easily throughout the website. This navbar is responsive on smaller screens as it collapses into a burger menu. 
+
+The navbar is displayed on a laptop screen in two sections, in the top right of the page there is links to the users profile, basket and home page. In the centre below these links there are pages in relation to the gallery. 
+
+On the smaller mobile screen, the burger menu is displayed in the top left with the navbar presented in one list. 
+
+The basket icon shows how many products that are in the basket at one time. This ensures the user is aware of how many products they have in their basket at all times. 
+
+
+**Logo** 
+- This website has a logo which can be seen across all pages and it is full responsive. Click the link below to view the website logo.
+
+[Image of website's Logo](https://github.com/Joha-will/Active-Spring-Portfolio-Project-4-Full-Stack-Toolkit-/blob/main/static/images/wb-logo.png)
+
+**Basket**
+
+The basket pages displays all of the products added by the user. The information about each product is shown in a table with the product name, size, quantity, price and total. There is an option for the user to update the quantity within the table and also remove the product from the basket. At the bottom of the page there is a proceed to checkout button for the user. 
+
+If there is no products currently in the basket a message is displayed that states ‘your basket is empty’.
+
+
+
+
+**All Products**
+
+The products sold by the gallery are all shown on this page. Every product has an image name, category, model, size and price. There is a view product button which takes you to the product detail page to view the item in a bigger display. 
+
+[Image of Nav-bar Status](https://github.com/Joha-will/Active-Spring-Portfolio-Project-4-Full-Stack-Toolkit-/blob/main/static/images/navbarstatus.png)
+
+[Image of Mobile View Nav-bar Status](https://github.com/Joha-will/Active-Spring-Portfolio-Project-4-Full-Stack-Toolkit-/blob/main/static/images/mobilenavbarstatus.png)
+
+
+**Footer**
+
+The footer includes useful links and icons to the gallery’s social media pages such as Instagram, Facebook, Twitter and Github. The footer also features as the newsletter subscription form. I wanted the user to be able to access this information at any time to encourage user engagement and gallery promotion. 
+
+The footer also displays the copyrights information.
+
+
+
+**User Profile**
+
+A user who owns an account with the gallery when they are logged in they can access their customer information containing personal details including contact information and the users default address as well as their order history.
+
+Within the personal details page the user is able to update their default shipping and billing address along with their contact information.
+
+The order history displays a table of all the previous orders created by the user. This shows the order date, order number, quantity, size order total and product name.
+
+
+**Delete booking Modal**
+
+- The several page has a Modal which gets toggles when a user tries to delete/cancel a remove information from the website. The Modal challenges the user by asking the user to confirm that they want to delete something.
+
+[Image of website's Update booking form](https://github.com/Joha-will/Active-Spring-Portfolio-Project-4-Full-Stack-Toolkit-/blob/main/static/images/updatebookingimg.png)
+
+**Contact us page**
+- The Contact us page has a form which alllows customers to send an email to the website if they have any problems or questions.
+
+
 
 
 ---
@@ -248,6 +384,13 @@ The website was tested in different browsers such as:
 - Safari
 
 - Opera.
+
+
+## **SEO**
+
+I carried out a SEO search using Google to determine which keywords and phrases that I will use within the website. By searching keywords and phrases in Google I was able to see which websites appeared and was able to replicate this in relation to my website.
+
+
 
 
 ---
