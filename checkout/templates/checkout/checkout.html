@@ -18,11 +18,11 @@ Checkout
 
     <div class="container-fluid mb-auto ">
 
-      <h2> Checkout</h2>
+        <h2> Checkout</h2>
 
-      <hr>
+        <hr>
 
-      <br>
+        <br>
 
         <div class="row">
 
@@ -31,42 +31,42 @@ Checkout
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset>
-                     <legend>Your information </legend>
-                     
-                     <div class="container">
-                        
-                        <div class="row">
-                          <div class="col-md-12"> {{ order_form.full_name | as_crispy_field }}</div>
-                        </div>
-                      
-                        <div class="row">
-                          <div class="col-6 col-sm-12">{{ order_form.email | as_crispy_field }}</div>
-                          <div class="col-6 col-sm-12">{{ order_form.phone_number | as_crispy_field }}</div>
-                        </div>
-                      
-                        <div class="row">
-                          <div class="col-12">{{ order_form.address1 | as_crispy_field }}</div>
-                          <div class="col-12">{{ order_form.address2 | as_crispy_field }}</div>
-                        </div>
+                        <legend>Your information </legend>
 
-                        <div class="row">
-                            <div class="col-6 col-sm-12">{{ order_form.city | as_crispy_field }}</div>
-                            <div class="col-6 col-sm-12">{{ order_form.postal_code | as_crispy_field }}</div>
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-md-12"> {{ order_form.full_name | as_crispy_field }}</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 col-sm-12">{{ order_form.email | as_crispy_field }}</div>
+                                <div class="col-6 col-sm-12">{{ order_form.phone_number | as_crispy_field }}</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">{{ order_form.address1 | as_crispy_field }}</div>
+                                <div class="col-12">{{ order_form.address2 | as_crispy_field }}</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 col-sm-12">{{ order_form.city | as_crispy_field }}</div>
+                                <div class="col-6 col-sm-12">{{ order_form.postal_code | as_crispy_field }}</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">{{ order_form.county | as_crispy_field }}</div>
+                                <div class="col-12">{{ order_form.country | as_crispy_field }}</div>
+                            </div>
+
+                            <div class="row">
+                                <label for="save-details"> Remember my shipping address</label>
+                                <input id="save-details" type="checkbox" name="save-details" checked>
+
+                            </div>
+
+
                         </div>
-
-                        <div class="row">
-                            <div class="col-12">{{ order_form.county | as_crispy_field }}</div>
-                            <div class="col-12">{{ order_form.country | as_crispy_field }}</div>
-                        </div>
-
-                        <div class="row">
-                            <label for="save-details"> Remember my shipping address</label>
-                            <input id="save-details" type="checkbox" name="save-details" checked>
-
-                        </div>
-
-
-                      </div>
                     </fieldset>
                     <fieldset>
                         <legend>Payment</legend>
@@ -84,7 +84,9 @@ Checkout
                                 <!-- Pass the client secret to the view so we can get the payment intent id -->
                                 <input type="hidden" value="{{ client_secret }}" name="client_secret">
 
-                                <button id="submit-button" type="submit" class="p-1 btn bg-dark text-white border-dark rounded-1 ml-auto">Complete Order</button>
+                                <button id="submit-button" type="submit"
+                                    class="p-1 btn bg-dark text-white border-dark rounded-1 ml-auto">Complete
+                                    Order</button>
 
                             </div>
                         </div>
@@ -94,17 +96,18 @@ Checkout
 
             <div class="col-lg-4 col-sm-12 ml-lg-auto ">
                 <fieldset>
-                    
+
                     <div class="row">
                         <div class="col-5 mr-auto">
 
-                            <legend>Your basket <small class="font-italic">({{product_count}})</small></legend>
+                            <h6>Your basket <small class="font-italic">({{product_count}})</small></h6>
 
                         </div>
                         <div class="col-4 ml-auto">
 
                             <div class="text-center p-1">
-                                <a href="{ url 'view_basket' }" class="btn bg-dark text-white border-dark rounded-1 w-100">
+                                <a href="{ url 'view_basket' }"
+                                    class="btn bg-dark text-white border-dark rounded-1 w-100">
                                     Edit
                                 </a>
                             </div>
@@ -142,8 +145,8 @@ Checkout
                                 </div>
                                 <div class="font-weight-bold"> Qty: {{item.quantity}}</div>
                             </div>
-                        <hr>
-                           
+                            <hr>
+
                         </div>
                         {% endfor %}
 
@@ -175,40 +178,34 @@ Checkout
                             </div>
 
                         </div>
-                    
+
 
                     </div>
-
-
-            </div>
-
-            </fieldset>
+                </fieldset>
 
             </div>
-
 
         </div>
 
-        <div class="spinner-container">
 
-            <div class="d-flex">
+    </div>
 
-                <div class="d-block text-center">
+    <div class="spinner-container">
 
-                    <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
-                        <span class="sr-only">Loading...</span>
+        <div class="d-flex">
 
-                    </div>
+            <div class="d-block text-center">
 
-                    <p> PROCESSING </p>
+                <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+                    <span class="sr-only">Loading...</span>
 
                 </div>
 
+                <p> PROCESSING </p>
+
             </div>
 
         </div>
-
-        
 
     </div>
 

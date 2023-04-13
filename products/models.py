@@ -38,7 +38,7 @@ class Category(models.Model):
     def get_absolute_url(self):
 
         return reverse('search_category', args=[self.slug])
-
+    # This method was published by Benignus
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.category_name)
