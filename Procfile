@@ -1,1 +1,1 @@
-web: gunicorn aduj-visuals.wsgi:application
+web: gunicorn ecommerce_store.wsgi:application
