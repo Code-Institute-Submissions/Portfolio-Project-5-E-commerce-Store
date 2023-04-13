@@ -388,7 +388,7 @@ The website was tested in different browsers such as:
 
 ## **SEO**
 
-I carried out a SEO search using Google to determine which keywords and phrases that I will use within the website. By searching keywords and phrases in Google I was able to see which websites appeared and was able to replicate this in relation to my website.
+I carried out a SEO search using Google to determine which keywords and phrases that I will use within the website. By searching keywords and phrases in Google I was able to see which websites appeared and was able to replicate this in relation to my website. I also add a sitemaps.xlm, robots.txt, descriptive tags and rel attributes.
 
 
 
