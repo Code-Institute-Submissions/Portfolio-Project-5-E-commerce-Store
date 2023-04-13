@@ -48,6 +48,8 @@ Users are also able to sign up to the websites newsletter created using a custom
 
 **FaceBook Page**
 
+[Facebook page](https://github.com/Joha-will/Portfolio-Project-5-E-commerce-Store/blob/main/media/340704067_186927914193896_3958745236801490948_n%20(1).png)
+
 
 
 
@@ -76,7 +78,15 @@ These wireframes were made during the planning stage to help me with the layout 
 
 Use the link below to view the website's wireframes.
 
-[Link to website's Wireframes](https://github.com/Joha-will/Active-Spring-Portfolio-Project-4-Full-Stack-Toolkit-/blob/main/static/assests/wireframes.md)
+[Link to website's Wireframes](https://github.com/Joha-will/Portfolio-Project-5-E-commerce-Store/blob/main/media/339924561_257439623298989_192185616300466220_n.jpg)
+
+[Link to website's Wireframes](https://github.com/Joha-will/Portfolio-Project-5-E-commerce-Store/blob/main/media/339938207_2193195340890959_3955804882203205048_n.jpg)
+
+[Link to website's Wireframes](https://github.com/Joha-will/Portfolio-Project-5-E-commerce-Store/blob/main/media/340480164_688061543120605_2658361926305037980_n.jpg)
+
+[Link to website's Wireframes](https://github.com/Joha-will/Portfolio-Project-5-E-commerce-Store/blob/main/media/340672787_929361618212581_7699663482635114504_n.jpg)
+
+[Link to website's Wireframes](https://github.com/Joha-will/Portfolio-Project-5-E-commerce-Store/blob/main/media/340893338_593758036036291_6214884837091446238_n.jpg)
 
 
 ## **Surface**
