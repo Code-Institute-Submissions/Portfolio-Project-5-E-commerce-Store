@@ -38,6 +38,8 @@ else:
 
 ALLOWED_HOSTS = ['aduj-visuals.herokuapp.com', 'localhost']
 
+DATE_INPUT_FORMAT = ['%d/%M/%Y', ]
+
 
 # Application definition
 

@@ -4,4 +4,4 @@ Disallow: /store_management/
 
 Disallow: /profile_management/
 
-Sitemap: 
+Sitemap: "https://aduj-visuals.herokuapp.com/sitemap.xml
